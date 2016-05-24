@@ -55,6 +55,8 @@ class SciencearticleController extends CommonController {
         $user=M('sc_article');
         //查询
         $res = $user->field('Img,a.id,a.Display,User_Email,Time,Title,Fid,Content,Class_Title,Class_Pid')->alias('a')->join('user_verify as i on a.User_Id = i.U_id')->join('sc_class on sc_class.id = a.Fid')->where('a.id='.$_GET['id'])->select();
+        echo $user->_sql();
+        // var_dump($_GET);
         // var_dump($res);
         // die;
         //二维数组变成一维
