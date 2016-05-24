@@ -11,6 +11,6 @@ class CommonController extends Controller {
 		// if(empty($id)){
 		// 	//没有登录
 		// 	$this->error('您还没有登录',U('Admin/Login/index'),3);
-		// }
+		}
 
 }
