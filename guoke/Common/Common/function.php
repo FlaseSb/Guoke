@@ -27,9 +27,10 @@
 
 	       $mail->AddAddress(trim($to), $name);  //设置收件的地址
 	       if (!$mail->Send()) {            //发送邮件
-	           echo '发送失败:'.$mail->ErrorInfo;
+	           return '发送失败:'.$mail->ErrorInfo;
 	       } else {
-	           echo "发送成功";
+	           return "发送成功";
+
 	       }
 		}
 	
@@ -48,7 +49,8 @@
 		        $this->error($upload->getError());    
 		    }else{// 上传成功        
 		        // $this->success('上传成功！'); 
-		        $str =  ltrim($upload->rootPath,'.').$info[$filename]['savepath'].$info[$filename]['savename'];
+		        $str =$info[$filename]['savepath'].$info[$filename]['savename'];
+
 		        $_POST[$filename] = $str;
 		    }
 		}
@@ -59,6 +61,7 @@
 		$verify = new \Think\Verify();    
 		return $verify->check($code, $id);
 	}
+
 
 
 	//返回违法关键字数组

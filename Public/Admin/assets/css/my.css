@@ -17,6 +17,32 @@
    z-index: 2;
    }
   
-    .mt{
-     margin-top:50px;
-    }
+  .mt{
+   margin-top:50px;
+  }
+
+  .ct{
+    text-align:center;
+  }
+
+  .ziti{
+    font-family: '微软雅黑';
+  }
+
+  .lh{
+    line-height: 40px !important;
+  }
+
+  .lh2{
+    line-height: 30px !important;
+  }
+
+  
+  .cu{
+    cursor: pointer;
+  }
+
+  .mb50{
+    margin-bottom: 50px;
+  }
+
