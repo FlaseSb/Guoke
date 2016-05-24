@@ -27,9 +27,11 @@
 
 	       $mail->AddAddress(trim($to), $name);  //设置收件的地址
 	       if (!$mail->Send()) {            //发送邮件
-	           echo '发送失败:'.$mail->ErrorInfo;
+
+	           return '发送失败:'.$mail->ErrorInfo;
 	       } else {
-	           echo "发送成功";
+	           return "发送成功";
+
 	       }
 		}
 	
@@ -48,7 +50,12 @@
 		        $this->error($upload->getError());    
 		    }else{// 上传成功        
 		        // $this->success('上传成功！'); 
+<<<<<<< HEAD
 		        $str =  ltrim($upload->rootPath,'.').$info[$filename]['savepath'].$info[$filename]['savename'];
+=======
+		        $str =$info[$filename]['savepath'].$info[$filename]['savename'];
+
+>>>>>>> 573bd60ffa2ef07f8e6dbeb38f30f4d1170113f8
 		        $_POST[$filename] = $str;
 		    }
 		}
@@ -62,7 +69,19 @@
 
 
 
+<<<<<<< HEAD
 
+=======
+	//返回违法关键字数组
+	function keyword(){
+		return array('SEX情色论坛','傻逼','king粉有售','啊扁涛哥','办理文凭','包养情妇','冰毒','蠢');
+		
+	}
+	// 高亮违法关键字数组
+	function highlight(){
+		return array('<span class="bg">SEX情色论坛</span>','<span class="bg">傻逼</span>','<span class="bg">king粉有售</span>','<span class="bg">啊扁涛哥</span>','<span class="bg">办理文凭</span>','<span class="bg">包养情妇</span>','<span class="bg">冰毒</span>','<span class="bg">蠢</span>');
+	}
+>>>>>>> 573bd60ffa2ef07f8e6dbeb38f30f4d1170113f8
 
 
 

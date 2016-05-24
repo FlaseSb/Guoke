@@ -19,12 +19,16 @@
 
         <div style="background-color: white;width:60%;" class="center-block">
           <div class="panel-body">
-                  <form action="{:U('Admin/User/add')}" method="post" class="form-horizontal">
+
+                  <form action="{:U('Admin/User/add')}" method="post" class="form-horizontal" enctype="multipart/form-data">
+
                     
                     <div class="form-group">
                       <label class="col-md-3 control-label" for="text-input">邮箱</label>
                       <div class="col-md-9">
-                        <input type="text" style="width:70%" id="text-input" name="User_email" readmin="请输入有效的电子邮箱" class="form-control" placeholder="Email">
+
+                        <input type="text" style="width:70%" id="text-input" name="User_Email" readmin="请输入有效的电子邮箱" class="form-control" placeholder="Email">
+
                         <span class="help-block" style="height:20px;"></span>
                       </div>
                     </div>
@@ -42,11 +46,24 @@
                         <span class="help-block" style="height:20px;"></span>
                       </div>
                     </div>
-                    <div class="center-block" style="width:90px">
 
+
+                    <div class="form-group">
+                      <label class="col-md-3 control-label" for="file-input">上传头像</label>
+                      <div class="col-md-9">
+                        <input type="file" id="file-input" name="myfile">
+                      </div>
+                    </div>
+
+
+
+                    <div class="center-block" style="width:90px">
+  
                    <button type="submit" class="bk-margin-5 btn btn-success btn-sm" style="margin:0px auto">Add User</button>
                    </div>
                     <br>
+
+                    
                   </form>
                 </div>
         </div>
@@ -133,4 +150,5 @@
       })
 
     </script>
+
 </block>

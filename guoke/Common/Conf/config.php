@@ -7,6 +7,7 @@ return array(
 	'DB_NAME'   => 'guoke', // 数据库名
 	'DB_USER'   => 'root', // 用户名
 	'DB_PWD'    => '123456', // 密码
+
 	'DB_PORT'   => 3306, // 端口
 	// 'DB_PREFIX' => '', // 数据库表前缀 
 	'DB_CHARSET'=> 'utf8', // 字符集
@@ -19,7 +20,13 @@ return array(
 	//设置url模式
 	'URL_MODEL' => 2,
 
+	
+	'EmailUsername'=>'15068050659@163.com',
+	'EmailPassword'=>'lgg521',
 	// //邮箱配置
-	// 'EmailUsername'=>'m15675598887@163.com',
-	// 'EmailPassword'=>'jinjianlu38'
+// 	shen__fa@163.com
+
+// 沈法 2016-5-22 16:21:47
+// shenfa123456789
+
 );
