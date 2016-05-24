@@ -18,28 +18,22 @@ class QuestionController extends Controller {
         $this->display();
         
     }
-    public function add(){
-        $this->display();
+    public function insert(){
+        var_dump($_POST);
     }
-    public function ajaxtag(){
-        // 接收问题值
-        $question=$_POST['question'];
+    // 添加问题标签
+    public function addtag(){
+       $data['tag_name']=!empty($_POST['tag_name'])?$_POST['tag_name']:die;
+
         $tag=M('qac_tag');
-
-        // 获取字串长度
-        $length=strlen($question);
-        // 字串分割到数组中
-        $ask=str_split($question,3);
-
-        //分配一个数组
-        $arr=array();
-
-        // 循环查询,插入到数组中
-        for ($i=0; $i <= $length-1 ; $i++) { 
-            $arr[]=$tag->where("tag_name like '%$ask[$i]%'")->select();
+        // 查询是否有该标签名
+        $res=$tag->where($data)->select();
+        if($res){
+            echo $res[0]['tag_id'];
+        }else{
+            $num=$tag->add($data);
+            echo $num;
         }
-        $arr=array_unique($arr);
-        echo json_encode($arr);
-
     }
+
 }

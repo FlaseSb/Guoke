@@ -137,7 +137,7 @@
         <div class="page-title">
             <h2>提新问题</h2>
         </div>
-        <form id="newAsk" class="gform" action="" method="POST">
+        <form id="newAsk" class="gform" action="<?php echo U('Home/Question/insert');?>" method="POST">
     <label style="float:left;">问题</label>
 	<div style="margin: 40px;">
         <textarea id="question" name="question" cols="80" rows="5"></textarea>
@@ -161,20 +161,12 @@
                 <div class="hide post-autoComp_tags gclear">
                     <div style="position:relative;z-index:1;_zoom:1;float:left;">
 	                    <input type="text" id="tagAdd">
-	                    <div style="position: absolute; z-index: 9999; top: 26px; left: 0px; width: 162px">
-			            	<div class="gui-menu gui-autocomplete-menu">
-			            		<ul class="gui-menu-list" id="taglist" style="display:none;">
-				            	                                                    
-			            		</ul>                    
-			            	</div>
-	                    </div>
                     </div>
                     <span style="font:13px 'Microsoft Yahei';float:left;margin-left: 10px;">给问题打上正确的标签有助于更快获得解答</span>
                 </div>
             </div>
         </div>
 
-    <input id="captcha" name="captcha" type="hidden" value="">
             <div style="float: right;">
                 <input type="submit" class="submit" value="发布">
                 <a href="" style="color:#3B3B3B;float: right;margin-top:10px;">取消</a>
@@ -223,39 +215,29 @@
 	</style>
 	<script src="/Public/Home/assets/js/jquery-1.8.3.min.js"></script>
 	<script type="text/javascript">
+	var id='';
 		// 绑定添加说明单击事件
 		$('#explain').click(function(){
 			$(this).css('display','none');
 			$('.editor').css('display','block');
 		})
-		// 绑定标签input获得焦点事件
-		$('#tagAdd').focus(function(){
+		// 绑定标签input失去焦点事件
+		$('#tagAdd').blur(function(){
 			var url="<?php echo U('Home/Question/ajaxtag');?>";
 			// 获取问题的值
-			var question=$('#question').val();
-			var str='';
-			var length='';
-			$('#taglist').css('display','block');
-			if(question!=''){
-				$.post(url,{question:question},function(data){
-					// 限制最多输出五个
-					if(data[0].length>5){
-						length=5;
-					}else{
-						length=data[0].length;
-					}
-					for(var i=0;i<length;i++){
-						str+='<li id="tagl"><a class="pt-txt tag-list-item"><h4 class="tag-list-name">'+data[0][i]['tag_name']+'</h4><p>'+data[0][i]['follow_num']+'人关注</p></a></li>';
-					}
-					$('#taglist').html(str);
-				},'json')
-			}
+			var tags=$(this).val();
+			var url='<?php echo U("/Home/Question/addtag");?>';
+			$.post(url,{tag_name:tags},function(data){
+				if(data!=''){
+					id+=data+',';
+					$('#tagContent').append('<span class="tag"><a href="">'+tags+'</a><a href="javascript: void 0;" class="gnicon-close-small" title="移除标签" id="del">X</a><input type="hidden" name="tags" value="'+id+'"></span>');
+				}
+			})
+			
 		})
-		// $('#tagAdd').blur(function(){
-		// 	$('#taglist').css('display','none');
-		// })
-		$('#tagl').live('click',function(){
-			$('#tagAdd').select();
+		// 删除标签
+		$('#del').live('click',function(){
+			$(this).parent().remove();
 		})
 	</script>
 	
