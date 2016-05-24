@@ -18,6 +18,7 @@
                     <div class="col-sm-2">
                       <div class="bk-margin-bottom-10">
                         <a href="{:U('Admin/User/add')}" id="addToTable" class="btn btn-info">Add<i class="fa fa-plus"></i></a>
+
                       </div>
                     </div>
                     
@@ -40,11 +41,13 @@
                           <li><a href="{:U('Admin/User/index',array('page'=>2))}">2</a></li>
                           <li><a href="{:U('Admin/User/index',array('page'=>5))}">5</a></li>
                           <li><a href="{:U('Admin/User/index',array('page'=>10))}">10</a></li>
+
                        </ul>
                     </div>
                     
                     <div class="col-sm-4">
                       <form class="search navbar-form"  action="{:U('Admin/User/index')}" method="get">
+
                           <div class="input-group input-search">
                             <input type="text" class="form-control bk-radius" name="keyword" id="q" placeholder="Search...">
                             <span class="input-group-btn" style="width:0px">
@@ -78,6 +81,7 @@
                         <td width="15%" id="edit_NK" class="lh">{$v.User_Nickname}</td>
                         <td width="15%"id="edit_Addre" class="lh">{$v.User_Address}</td>
                      
+
                       </tr>
                     </foreach>
                   </table>
@@ -95,5 +99,6 @@
         </div>  
           <!-- ajax删除 -->
       
+
 </block>
 

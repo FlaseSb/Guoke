@@ -82,6 +82,7 @@ class UserController extends CommonController {
     	}else{
     	//用户的添加页面显示
         	$this->display();
+
     	}
     }
 
@@ -173,4 +174,3 @@ class UserController extends CommonController {
        }
     }
 
-}

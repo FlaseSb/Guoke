@@ -18,6 +18,7 @@ return array(
 
 	//设置url模式
 	'URL_MODEL' => 2,
+	
 	'EmailUsername'=>'15068050659@163.com',
 	'EmailPassword'=>'lgg521',
 	// //邮箱配置
@@ -25,4 +26,5 @@ return array(
 
 // 沈法 2016-5-22 16:21:47
 // shenfa123456789
+
 );
