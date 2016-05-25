@@ -2,7 +2,11 @@
 namespace Home\Controller;
 use Think\Controller;
 class ArticleController extends Controller {
+<<<<<<< HEAD
 	//文章详情页
+=======
+	//文章详情页,评论
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
     public function index(){
         //过滤id
         $id=I('get.id');
@@ -41,6 +45,7 @@ class ArticleController extends Controller {
         // var_dump($res);
         // die;
     	//未登录时文本框
+<<<<<<< HEAD
     	$notext='<div class="reply-box"><p class="reply-info">请 <a rel="nofollow" href="javascript: void 0;" data-login="yes">登录</a> 发表评论</p></div>';
     	//登录时文本框
     	$yestext='<script id="editor" type="text/plain" style="width:638px;height:300px;"></script>
@@ -53,6 +58,26 @@ class ArticleController extends Controller {
     		// 登录显示百度文本编辑器
 	    	$this->assign('yestext',$yestext);
     	}
+=======
+    	// $notext='<div class="reply-box"><p class="reply-info">请 <a rel="nofollow" href="javascript: void 0;" data-login="yes">登录</a> 发表评论</p></div>';
+    	// //登录时文本框
+    	// $yestext='<script id="editor" type="text/plain" style="width:638px;height:300px;"></script>
+     //        <button style="border:1px solid green;background:#47B5E7;width:100px;height:30px;line-height:25px;cursor:pointer;margin-top:10px;" type="submit"><span class="icon-write"></span>发表</button>';
+    	// //利用SESSION判断是否登录
+    	// if (!empty($_SESSION['user'])) {
+    	// 	// 未登录显示跳转登录,禁用文本框
+    	// 	$this->assign('notext',$notext);
+    	// } else {
+    	// 	// 登录显示百度文本编辑器
+	    // 	$this->assign('yestext',$yestext);
+    	// }
+        
+
+        
+
+
+
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
     	//变量赋值到前台
         $this->assign('other',$other);
         $this->assign('res',$res);
@@ -61,7 +86,20 @@ class ArticleController extends Controller {
     }
     //评论上传
     public function upload(){
+<<<<<<< HEAD
 		var_dump($_POST);    	
+=======
+        //接收POST,增加一个时间
+        $_POST['Cm_Time']=Time();
+        var_dump($_POST);
+        //实例化表
+        $user=M('sc_comment');
+        $user->create();
+        $user->add();
+
+
+
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
     }
     //AJAX获取评论
     public function ajaxcomment(){

@@ -1,18 +1,117 @@
-<extend name="Public/index"/>
-<block name="style">
-        <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/affa772f.main.css" />
-        <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/7a149cf0.skin.css" />
-        <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/4ac1ff47.gbbcode.css" />
-        <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/a0687475.article.css" />
-</block>
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7 screen-scroll"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 screen-scroll"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9 screen-scroll"> <![endif]-->
+<html class="no-js screen-scroll">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
+        <meta name="Keywords" content="果壳问答, ask, 果壳,果壳网,科技,泛科技,智趣,生活,科普"/>
+        <meta name="Description" content="汇集知识碎片，创造有价值的答案"/>
+        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no" />
+        <meta name="format-detection" content="telephone=no" />
+        <title> 问答首页 | 问答 | 果壳网 科技有意思</title>
+
+        <link rel="stylesheet" href="/Public/Home/assets/css/bc4bd704.main.css" />
+        <link rel="stylesheet" href="/Public/Home/assets/css/920d0c10.index.css" />
+
+        <link rel="shortcut icon" href="assets/ico/favicon.ico" type="image/x-icon" />
+        <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png" />
+        <link rel="apple-touch-icon" sizes="57x57" href="assets/ico/apple-touch-icon-57x57.png" />
+        <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png" />
+        <link rel="apple-touch-icon" sizes="76x76" href="assets/ico/apple-touch-icon-76x76.png" />
+        <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png" />
+        <link rel="apple-touch-icon" sizes="120x120" href="assets/ico/apple-touch-icon-120x120.png" />
+        <link rel="apple-touch-icon" sizes="144x144" href="assets/ico/apple-touch-icon-144x144.png" />
+        <link rel="apple-touch-icon" sizes="152x152" href="assets/ico/apple-touch-icon-152x152.png" />
+        
+        <link rel="stylesheet" href="/Public/Home/assets/Content/affa772f.main.css" />
+        <link rel="stylesheet" href="/Public/Home/assets/Content/7a149cf0.skin.css" />
+        <link rel="stylesheet" href="/Public/Home/assets/Content/4ac1ff47.gbbcode.css" />
+        <link rel="stylesheet" href="/Public/Home/assets/Content/a0687475.article.css" />
+
+</head>
+    <body>
+        <div class="gheader-wrap">
+            
+
+<div class="gheader-new">
+    <div class="gh-wrap">
+        <div class="gfl">
+            <ul class="gh-nav">
+                <li>
+                    <a href="http://www.guokr.com/"><span class="gnicon-home"></span>首页<b ></b></a>
+                </li>
+                <li>
+
+                    <a href="">科学人<b ></b></a>
+                </li>
+                <li>
+                    <a href="">小组<b ></b></a>
+                </li>
+                <li>
+                    <a href="">问答<b class="gnarrow-up"></b></a>
+
+                </li>
+                <li class="gh-sm-hidden">
+                    <a href="http://mooc.guokr.com/" target="_blank">MOOC</a>
+                </li>
+                <li class="gh-sm-hidden">
+                    <a href="http://www.zaih.com/" target="_blank">在行</a>
+                </li>
+                <li class="gh-sm-hidden">
+                    <a href="http://www.kexuelife.com" target="_blank">科学与生活</a>
+                </li>
+                <li class="gh-sm-hidden">
+                    <a href="http://www.15yan.com/" target="_blank">十五言</a>
+                </li>
+
+                <li id="moreNav" class="gh-sm-hidden">
+                    <a href="javascript:void 0;" class="other">更多<i class="gnarrow-down"></i></a>
+                    <div class="gh-list">
+                        <ul>
+                            <li class="gh-sm-hidden">
+                                <a href="http://www.guokr.com/mobile/" target="_blank">果壳精选</a>
+                            </li>
+                            <li class="gh-sm-hidden">
+                                <a href="http://gate.guokr.com/" target="_blank">任意门</a>
+                            </li>
+                            <li class="gh-sm-hidden">
+                                <a href="http://www.guokr.com/group/weixin_account/" target="_blank">果壳微信号</a>
+                            </li>
+                            <li class="gh-sm-hidden">
+                                <a href="http://music.guokr.com/" target="_blank">果壳音乐</a>
+                            </li>
+                            <li class="gh-sm-hidden">
+                                <a href="http://www.guokr.com/group/185/" target="_blank">果壳动漫</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+            <form class="gh-search" id="search" method="get" action="http://www.guokr.com/search/all/">
+                <p id="searchBox">
+                    <input id="searchTxt" class="gh-search-txt" type="text" name="wd" maxlength="30" value="">
+                    <input class="gnicon-search" type="submit" value="搜索">
+                </p>
+            </form>
+        </div>
+        <div class="gh-login">
+            <a rel="nofollow" href="http://www.guokr.com/sso/ask/?suppress_prompt=1&amp;lazy=y&amp;success=http%3A%2F%2Fwww.guokr.com%2Fask%2F">登录</a>
+            <span class="split">|</span>
+            <a rel="nofollow" href="https://account.guokr.com/sign_up/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2Fask%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fgroup%252Fuser%252Frecent_replies%252F">注册</a>
+        </div>
+    </div>
+</div>
+</div>
 
 
 
-<block name="content">
+
     <!-- 引入百度编辑器 -->
-    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
-    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script>
-    <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/lang/zh-cn/zh-cn.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Public/ueditor/ueditor.config.js"></script>
+    <script type="text/javascript" charset="utf-8" src="/Public/ueditor/ueditor.all.min.js"> </script>
+    <script type="text/javascript" charset="utf-8" src="/Public/ueditor/lang/zh-cn/zh-cn.js"></script>
     
 
     
@@ -28,18 +127,18 @@
                 <a class="label label-read" href="http://www.guokr.com/scientific/channel/brief/" target="_blank" data-gaevent="scientific_tag:v1.1.1.1:scientific">速读<b class="gnarrow-right"></b></a>
                 
                 <a class="label label-common" href="http://www.guokr.com/scientific/subject/astronomy/" target="_blank">天文<b class="gnarrow-right"></b></a>
-                <h1 itemprop="http://purl.org/dc/terms/title"id="articleTitle">{$res.Title}</h1>
+                <h1 itemprop="http://purl.org/dc/terms/title"id="articleTitle"><?php echo ($res["Title"]); ?></h1>
                 <p itemprop="http://rdfs.org/sioc/ns#note" class="ghide"></p>
                 <meta itemprop="http://purl.org/dc/terms/abstract" content="400多年前爆炸的一颗恒星，如今化为一团碎屑，仍在持续扩散。NASA花了15年时间持续观测，终于让我们能够“亲眼”看见这团碎屑的演变过程。" />
                 
                 <div class="content-th-info">
                     
-                        <a itemprop="http://rdfs.org/sioc/ns#has_creator" title="{$res.User_Nickname}" href="http://www.guokr.com/i/0721544490/" data-ukey="bxl7ai">{$res.User_Nickname}</a>
+                        <a itemprop="http://rdfs.org/sioc/ns#has_creator" title="<?php echo ($res["User_Nickname"]); ?>" href="http://www.guokr.com/i/0721544490/" data-ukey="bxl7ai"><?php echo ($res["User_Nickname"]); ?></a>
                     
                     
                     <meta itemprop="http://purl.org/dc/terms/modified" content="2016-05-13T17:34:02+08:00" />
                     
-                    <span>发表于 &nbsp;{$res.Time}</span>
+                    <span>发表于 &nbsp;<?php echo ($res["Time"]); ?></span>
                     
                     
                 </div>
@@ -47,10 +146,10 @@
             <div itemprop="http://rdfs.org/sioc/ns#content" class="content-txt" id="articleContent">
                 
                 <div class="document">
-                    <p hidden>本文作者:{$res.User_Nickname}</p>
+                    <p hidden>本文作者:<?php echo ($res["User_Nickname"]); ?></p>
                     <div>
                         <p class="img-caption">
-                        {$res.Content}
+                        <?php echo ($res["Content"]); ?>
                         </p>
                     </div>
                 </div>
@@ -59,7 +158,7 @@
 
             <div class="recommend-articles">
                 <div class="document-do">
-                    <div id="share" class="gfl share-box bdsharebuttonbox" data-author="{$res.User_Nickname} " data-tag="shareMain" data-xlnickname=""></div>
+                    <div id="share" class="gfl share-box bdsharebuttonbox" data-author="<?php echo ($res["User_Nickname"]); ?> " data-tag="shareMain" data-xlnickname=""></div>
                     <div itemprop="http://rdfs.org/sioc/ns#has_disccussion" itemscope itemtype="http://schema.org/UserLike" class="gfr">
                         <meta itemprop="description" content="4" />
                         <a data-gaevent="article_button_comment:article" href="javascript:void 0;" id="basketBtn" data-title="第谷超新星遗迹，动起来了！" data-url="http://www.guokr.com/article/441438/">收藏</a>
@@ -212,7 +311,7 @@
             
 
             <!-- <if/> --><!-- 后期的SISSION -->
-            <!-- <a class="cmt-do-quote" href="{:U('Home/Login/index')}" data-operation="quoteComment">评论</a> -->
+            <!-- <a class="cmt-do-quote" href="<?php echo U('Home/Login/index');?>" data-operation="quoteComment">评论</a> -->
 
             <a data-gaevent="article_reply_comment:article" class="cmt-do-quote comment" id="comment" href="#commentsReplyer" data-operation="quoteComment">评论</a>
             <!-- </if> -->
@@ -533,14 +632,14 @@
                 <h3 id="replyer">你的评论</h3>
             
                 <!-- 未登录时显示的文本框 -->
-                {$notext}
+                <?php echo ($notext); ?>
                 
                 
                 
             
             
             </div>
-            <form action="{:U('Home/Article/upload')}" method="post">
+            <form action="<?php echo U('Home/Article/upload');?>" method="post">
 
 
 
@@ -551,11 +650,11 @@
 
 
             <!-- 隐藏域,传输文章ID -->
-            <input id="scid" type="hidden" name="Wid" value="{$res.id}">
+            <input id="scid" type="hidden" name="Wid" value="<?php echo ($res["id"]); ?>">
             <!-- 隐藏域,传输被回复的用户的ID -->
             <input id="pid" type="hidden" name="Pid" value="0">
             <!-- 登录时显示的文本框 -->
-            <!-- {$yestext} -->
+            <!-- <?php echo ($yestext); ?> -->
             <script id="editor" name="Cm_Content" type="text/plain" style="width:638px;height:300px;"></script>
             <button style="border:1px solid green;background:#47B5E7;width:100px;height:30px;line-height:25px;cursor:pointer;margin-top:10px;" type="submit"><span class="icon-write"></span>发表</button>';
             </form>
@@ -566,12 +665,12 @@
         
         <div class="author-info  clearfix">
                 <a class="author-pic" href="http://www.guokr.com/i/0721544490/">
-                    <img src="../Picture/_p5x377pntsla33_fd9jz8w8b8t4zxwshqpqs-dlqlygaaaaoaaaaepq.jpg" alt="{$res.User_Nickname}"/>
+                    <img src="../Picture/_p5x377pntsla33_fd9jz8w8b8t4zxwshqpqs-dlqlygaaaaoaaaaepq.jpg" alt="<?php echo ($res["User_Nickname"]); ?>"/>
                 </a>
                 <div class="author-intro clearfix">
                     <span class="author-wrap">
                         
-                        <a href="http://www.guokr.com/i/0721544490/" class="author" title="{$res.User_Nickname}" id="authorName" data-ukey="bxl7ai">{$res.User_Nickname}</a>
+                        <a href="http://www.guokr.com/i/0721544490/" class="author" title="<?php echo ($res["User_Nickname"]); ?>" id="authorName" data-ukey="bxl7ai"><?php echo ($res["User_Nickname"]); ?></a>
                         
                         
                     </span>
@@ -584,17 +683,15 @@
         </div>
         <ul class="related-article">
             
-            <foreach name="other" item="v">
-                <li>
-                    <a href="{:U('Home/Article/index',array('id'=>$v['id']))}"  target="_blank" data-gaevent="article_same_author:v1.1.1.1:article">{$v['Title']}</a>
-                </li>
-            </foreach>            
+            <?php if(is_array($other)): foreach($other as $key=>$v): ?><li>
+                    <a href="<?php echo U('Home/Article/index',array('id'=>$v['id']));?>"  target="_blank" data-gaevent="article_same_author:v1.1.1.1:article"><?php echo ($v['Title']); ?></a>
+                </li><?php endforeach; endif; ?>            
            
             
         </ul>
         
         <div class="side-qr-code">                                    
-            <img src="__PUBLIC__/Home/assets/Images/zqkqb0rvqhnvbjpa4qqsm5sstypta0t3gnay_b2vwgqyaaaasgaaaepq.jpg">        
+            <img src="/Public/Home/assets/Images/zqkqb0rvqhnvbjpa4qqsm5sstypta0t3gnay_b2vwgqyaaaasgaaaepq.jpg">        
             <p>更多科研事,扫码早知道</p>
         </div>
     </div>
@@ -618,7 +715,7 @@
 
     
 </script>
-<script src="__PUBLIC__/Home/assets/Scripts/476760c9.editor.js"></script>
+<script src="/Public/Home/assets/Scripts/476760c9.editor.js"></script>
 <script>
             var g_page_name = 'unkownPage',
             GJS_VERSION = 'doom',
@@ -643,15 +740,15 @@
             _BFD.script.src = (('https:' == document.location.protocol?'https://ssl-static1':'http://static1')+'.bfdcdn.com/service/guokewang/guokewang.js');
             document.getElementsByTagName("head")[0].appendChild(_BFD.script);
         </script>
-        <script src="__PUBLIC__/Home/assets/Scripts/aea9c4c1.base.js"></script>
-        <script src="__PUBLIC__/Home/assets/Scripts/b00a5135.main.js"></script>
-<script src="__PUBLIC__/Home/assets/Scripts/ad492e38.article.js"></script>
+        <script src="/Public/Home/assets/Scripts/aea9c4c1.base.js"></script>
+        <script src="/Public/Home/assets/Scripts/b00a5135.main.js"></script>
+<script src="/Public/Home/assets/Scripts/ad492e38.article.js"></script>
 <script type="text/javascript">
     //实例化编辑器
         //建议使用工厂方法getEditor创建和引用编辑器实例，如果在某个闭包下引用该编辑器，直接调用UE.getEditor('editor')就能拿到相关的实例
         var ue = UE.getEditor('editor'/*,{toolbars:[['bold','simpleupload']]}*/);
 </script>
-<script type="text/javascript" src="__PUBLIC__/Home/assets/Script/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="/Public/Home/assets/Script/jquery-1.8.3.js"></script>
 <script type="text/javascript">
     //点击'显示所有评论'发AJAX
     $('.show-all-reply').click(function(event) {
@@ -660,7 +757,7 @@
         //隐藏'显示所有评论DIV'
         $('.show-all-reply').css('display','none');
         //发送AJAX取评论
-        $.get("{:U('Home/Article/ajaxcomment')}", function(data) {
+        $.get("<?php echo U('Home/Article/ajaxcomment');?>", function(data) {
             //返回评论排版
         });
     });
@@ -683,4 +780,57 @@
         UE.getEditor('editor').setContent('<blockquote>引用@'+'<a href="1">'+uname+'</a>'+' 的话：'+ucontent+' </blockquote><p>');
     })
 </script>
-</block>
+
+
+<div class="gbottom">
+    <div class="gbottom-nav">
+        <a href="http://www.guokr.com/about/">关于我们</a>
+        <a href="http://www.guokr.com/zone/job/">加入果壳</a>
+        <a href="http://www.guokr.com/spread/">媒体报道</a>
+        <a href="http://www.guokr.com/question/446161/">帮助中心</a>
+        <a href="http://www.guokr.com/event/home/">果壳活动</a>
+        <a href="http://www.guokr.com/help/policy/">免责声明</a>
+        <a href="http://www.guokr.com/contact/">联系我们</a>
+        <a href="http://m.guokr.com/">移动版</a>
+        <a href="http://www.guokr.com/mobile/">移动应用</a>
+    </div>
+    <div class="gbottom-i">©2015果壳网&nbsp;京ICP备09043258号-2&nbsp;京公网安备1101052730</div>
+</div>
+        
+    <script>
+        var g_m_url = "http:\/\/m.guokr.com\/ask\/"
+    </script>
+    <script>
+            var g_page_name = "askIndexPage",
+            GJS_VERSION = 'doom',
+            ukey = null,
+            client_id = 32382,
+                url_signin = "http:\/\/www.guokr.com\/sso\/ask\/?suppress_prompt=1&lazy=y&success=http%3A%2F%2Fwww.guokr.com%2Fask%2F",
+                url_signin_mobile = "http:\/\/www.guokr.com\/sso\/ask\/mobile\/?suppress_prompt=1&lazy=y&success=http%3A%2F%2Fwww.guokr.com%2Fask%2F";
+                url_signup = "https:\/\/account.guokr.com\/sign_up\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2Fask%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fgroup%252Fuser%252Frecent_replies%252F",
+                weibo_signin = "https:\/\/account.guokr.com\/weibo\/sign_in\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2Fask%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fask%252F",
+                renren_signin = "https:\/\/account.guokr.com\/renren\/sign_in\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2Fask%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fask%252F",
+                qq_signin = "https:\/\/account.guokr.com\/qq\/sign_in\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2Fask%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fask%252F";
+                douban_signin = "https:\/\/account.guokr.com\/douban\/sign_in\/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2Fask%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fask%252F";
+        window["_BFD"] = window["_BFD"] || {};
+            _BFD.client_id = "Cguoke";
+            _BFD.BFD_INFO = {
+                "user_id" : ""
+            };
+            _BFD.script = document.createElement("script");
+            _BFD.script.type = "text/javascript";
+            _BFD.script.async = true;
+            _BFD.script.charset = "utf-8";
+            _BFD.script.src = (('https:' == document.location.protocol?'https://ssl-static1':'http://static1')+'.bfdcdn.com/service/guokewang/guokewang.js');
+            document.getElementsByTagName("head")[0].appendChild(_BFD.script);
+        </script>
+        <script src="/Public/Home/assets/Scripts/4f6c85b6.base.js"></script>
+        <script src="/Public/Home/assets/Scripts/4a820424.main.js"></script>
+    <script src="/Public/Home/assets/Scripts/5e9e8f3e.index.js"></script>
+    <!-- cbjs.baidu.com is too slow for us so let's mirroring it -->
+	<script type="text/javascript" src="/Public/Home/assets/Scripts/m.js"></script>
+    <script type="text/javascript">
+    BAIDU_CLB_fillSlotAsync('664451', 'bdadm-664451');</script>
+
+</body>
+</html>

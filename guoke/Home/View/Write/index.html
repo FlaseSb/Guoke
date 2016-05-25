@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7 screen-scroll"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 screen-scroll"> <![endif]-->
@@ -17,6 +18,11 @@
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no" />
         <meta name="format-detection" content="telephone=no" />
         <title>用文字展现科学，给我投稿吧！ |  果壳网 科技有意思</title>
+=======
+﻿<extend name="Public/index"/>
+<block name="style">
+        <!-- <title>用文字展现科学，给我投稿吧！ |  果壳网 科技有意思</title> -->
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/6e7bcd6e.main.css" />
         <!--[if lt IE 9]><link rel="stylesheet" href="__PUBLIC__/Home/Write/css/e43d2adb.ie678.css" /><![endif]-->
     
@@ -24,9 +30,17 @@
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/assets/Content/7a149cf0.skin.css" />
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/assets/Content/26b86cdf.post.css" />
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/assets/Content/26b86cdf.post.css" />
+<<<<<<< HEAD
 
 </head>
 <body>
+=======
+</block>
+
+
+
+<block name="content">
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
     <div class="gheader-wrap">
         
     <!-- 引入百度编辑器     -->
@@ -37,8 +51,11 @@
     <!-- jquery -->
     <script src="__PUBLIC__/Home/assets/Scripts/jquery-1.8.3.min.js"></script>
 
+<<<<<<< HEAD
     <!-- 引入公共的导航文件 -->
     <include file="Public/navigation" />
+=======
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
             
 
     <form action="{:U('Home/Write/update')}" method="post" nctype="multipart/form-data">
@@ -60,7 +77,11 @@
 				<div class="group-info-detail">
                     <div class="group-info-name">
                         <h3>选择分类　</h3>
+<<<<<<< HEAD
                             <select onchange="change(this)" name="Fid">
+=======
+                            <select onchange="change(this)" name="Fid" style="border:1px solid #ccc">
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
                                 <!-- 取出顶级分类 -->
                                 <option value="">--请选择--</option>
                                 <foreach name="res" item="v">
@@ -68,7 +89,11 @@
                                 </foreach>
                             </select>
                             <!-- 取出次级分类,默认隐藏,name名一样,如果选择了次级,次级分覆盖父级 -->
+<<<<<<< HEAD
                             <select id="city" name="Fid" style="display:none">
+=======
+                            <select id="city" name="Fid" style="display:none;border:1px solid #ccc">
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
 
                             </select>
     					</div>
@@ -106,6 +131,7 @@
                     </div>
                 <div class="gbottom">
             </form>
+<<<<<<< HEAD
         <div class="gbottom-nav">
             <a href="http://www.guokr.com/about/">关于我们</a>
             <a href="http://www.guokr.com/zone/job/">加入果壳</a>
@@ -120,6 +146,9 @@
         <div class="gbottom-i">
             ©2015果壳网&nbsp;京ICP备09043258号-2&nbsp;京公网安备1101052730
         </div>
+=======
+        
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
     </div>
     
 
@@ -161,5 +190,9 @@
             },'json');
         }
     </script>
+<<<<<<< HEAD
 </body>
 </html>
+=======
+</block>
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5

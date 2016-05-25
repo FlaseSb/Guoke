@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<?php if (!defined('THINK_PATH')) exit();?>﻿<!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -8,9 +8,9 @@
     
     
     
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/gui.css">
+    <link rel="stylesheet" type="text/css" href="/Public/home/assets/css/gui.css">
     
-    <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/assets/css/login-reg.css">
+    <link rel="stylesheet" type="text/css" href="/Public/home/assets/css/login-reg.css">
 
 </head>
 <body>
@@ -20,9 +20,7 @@
     <div class="gheader-wp-b">
         <div class="gheader" id="gheader">
             <a class="gheader-logo gfl" id="guokrLogo"  title="果壳 科技有意思">果壳网</a>
-
-            <img class="gmotto" src="__PUBLIC__/home/assets/Picture/motto.png" alt="成为果壳青年，一起记录科技时代！" />
-
+            <img class="gmotto" src="/Public/home/Picture/motto.png" alt="成为果壳青年，一起记录科技时代！" />
         </div>
     </div>
 </div>
@@ -56,9 +54,7 @@
         <div style="width:290px">
             <input class="gbtxt form-txt-vcode" id="captcha" name="code" placeholder="验证码" type="text" value="" style="width:150px">
             <div style="float:right">
-
-                <img src="{:U('Home/Common/CreateVcode')}" onclick="this.src=this.src+'?a'" width="100px" height="40px" alt="" style="cursor:pointer">
-
+                <img src="<?php echo U('Home/Public/CreateVcode');?>" onclick="this.src=this.src+'?a'" width="100px" height="40px" alt="" style="cursor:pointer">
             </div>
         </div>
         
@@ -95,8 +91,8 @@
 </div>
     </div>
 
-    <script src="__PUBLIC__/Admin/assets/js/jquery-1.8.3.min.js"></script>
-    <script src="__PUBLIC__/Home/assets/Scripts/jquery.md5.js"></script>
+    <script src="/Public/Admin/assets/js/jquery-1.8.3.min.js"></script>
+    <script src="/Public/Home/assets/Scripts/jquery.md5.js"></script>
     <script>
 
 $(function(){
@@ -116,23 +112,15 @@ $(function(){
            var password=$('#password').val();
            var md5pass=$.md5(password);
            var check=$('#permanent:checked').val();
-<<<<<<< HEAD
            console.log(check);
-=======
-<<<<<<< HEAD
-           // console.log(check);
-=======
-           console.log(check);
->>>>>>> bcdb9eb72a73c5d534ca18238ea488f3351b018c
->>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
            $.ajax({
-             url:"{:U('Home/Login/logindo')}",
+             url:"<?php echo U('Home/Login/logindo');?>",
              data:{email:email,pass:md5pass,checked:check},
              type:'post',
              async:false,
              success:function(data){
                 if(data){
-                    location.href="{:U('Home/Index/index')}";
+                    location.href="<?php echo U('Home/Index/index');?>";
                 }else{
                     $('.lolo').text('邮箱未注册或密码不正确');
                 }
@@ -168,7 +156,7 @@ $(function(){
              CUSER = false;
           }else{
               $.ajax({
-                url:"{:U('Home/Login/Emaildo')}",
+                url:"<?php echo U('Home/Login/Emaildo');?>",
                 data:{email:Email},
                 type:'get',
                 async:false,
@@ -202,7 +190,7 @@ $(function(){
           var p = $(this).val();
           var me=$(this);
           $.ajax({
-            url:"{:U('Home/Login/yzm')}",
+            url:"<?php echo U('Home/Login/yzm');?>",
             data:{code:p},
             type:'post',
             async:false,

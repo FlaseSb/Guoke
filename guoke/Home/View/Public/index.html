@@ -1,7 +1,5 @@
 ﻿<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7 screen-scroll"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 screen-scroll"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9 screen-scroll"> <![endif]-->
+
 <html class="no-js screen-scroll">
     <head>
         <meta charset="UTF-8" />
@@ -15,20 +13,14 @@
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/css/bc4bd704.main.css" />
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/css/920d0c10.index.css" />
 
-        <link rel="shortcut icon" href="assets/ico/favicon.ico" type="image/x-icon" />
-        <link rel="apple-touch-icon" href="assets/ico/apple-touch-icon.png" />
-        <link rel="apple-touch-icon" sizes="57x57" href="assets/ico/apple-touch-icon-57x57.png" />
-        <link rel="apple-touch-icon" sizes="72x72" href="assets/ico/apple-touch-icon-72x72.png" />
-        <link rel="apple-touch-icon" sizes="76x76" href="assets/ico/apple-touch-icon-76x76.png" />
-        <link rel="apple-touch-icon" sizes="114x114" href="assets/ico/apple-touch-icon-114x114.png" />
-        <link rel="apple-touch-icon" sizes="120x120" href="assets/ico/apple-touch-icon-120x120.png" />
-        <link rel="apple-touch-icon" sizes="144x144" href="assets/ico/apple-touch-icon-144x144.png" />
-        <link rel="apple-touch-icon" sizes="152x152" href="assets/ico/apple-touch-icon-152x152.png" />
+
+        
         <block name="style">
             
         </block>
 </head>
-    <body>
+
+<body>
         <div class="gheader-wrap">
             
 
@@ -37,7 +29,7 @@
         <div class="gfl">
             <ul class="gh-nav">
                 <li>
-                    <a href="http://www.guokr.com/"><span class="gnicon-home"></span>首页<b ></b></a>
+                    <a href="{:U('Home/Index/index')}"><span class="gnicon-home"></span>首页<b ></b></a>
                 </li>
                 <li>
 
@@ -93,20 +85,81 @@
                 </p>
             </form>
         </div>
-        <div class="gh-login">
-            <a rel="nofollow" href="http://www.guokr.com/sso/ask/?suppress_prompt=1&amp;lazy=y&amp;success=http%3A%2F%2Fwww.guokr.com%2Fask%2F">登录</a>
-            <span class="split">|</span>
-            <a rel="nofollow" href="https://account.guokr.com/sign_up/?success=http%3A%2F%2Fwww.guokr.com%2Fsso%2Fask%2F%3Fsuppress_prompt%3D1%26lazy%3Dy%26success%3Dhttp%253A%252F%252Fwww.guokr.com%252Fgroup%252Fuser%252Frecent_replies%252F">注册</a>
-        </div>
+        <if condition="$msg eq true">
+
+        
+            <ul class="gh-notice gfr">
+               
+                <li id="gheaderNotice" class="gactived">
+                    <a data-gaevent="home_nav_news:guokr" href="javascript:void 0;" class="gh-i-notice">
+                        <span class="gnicon-notice gfl"></span>
+                        <span class="gh-i-num unread" id="noticeNum">0</span>
+                    </a>
+                    <div class="gh-notice-panel" id="noticeBlock" style="display:none;">
+                        <div class="notice-content">
+                            <div class="gh-i-popup-category">
+                                <span class="gfl">通知</span>
+                                <a href="http://www.guokr.com/settings/notice/" class="gnicon-set gfl"></a>
+                                <a href="http://www.guokr.com/user/notice/" class="gfr">全部通知</a>
+                            </div>
+                            <ul></ul>
+                        </div>
+                        <div class="gh-panel-bottom ghide" id="noticeBottom">
+                            <a href="javascript:void 0;" class="gnbtn miss-all" data-operation="dismissAll">知道了</a>
+                        </div>
+                    </div>
+                </li>
+                <li id="gheaderRemind" class="unread">
+                    <a data-gaevent="home_nav_news:guokr" href="javascript:void 0;" class="gh-i-remind">
+                        <span class="gnicon-msg gfl"></span>
+                        <span class="gh-i-num" id="totleNum">2</span>
+                    </a>
+                    <div class="gh-remind-panel" id="remindBlock" style="display:none">
+                        <div class="remind-content">
+                           <div class="gh-i-popup-category gh-msg-title">
+                                <span class="gfl">站内信</span>
+                                <a href="http://www.guokr.com/user/messages/" class="gfr">全部站内信</a>
+                            </div>
+                            <ul class="msg-list">
+                            </ul>
+                        </div>
+                    </div>
+                </li>
+                <li id="gheaderSettings">
+                    <a href="javascript:void 0;" class="gh-i-me">
+                        <img src="http://1.im.guokr.com/TL27-S81EuoahCN7pVlXlzCI6I07ORoBQCo7fDv5EUqgAAAAoAAAAFBO.png?imageView2/1/w/24/h/24" width="24" height="24">
+                        <i class="gnarrow-down"></i>
+                    </a>
+                    <div class="gh-list" style="display:none;" id="settingsBlock">
+                        <ul>
+                            
+                        </ul>
+                    </div>
+                </li>
+           </ul>
+         
+         <else /> 
+         
+            <div class="gh-login">
+                <a rel="nofollow" href="{:U('Home/login/index')}">登录</a>
+                <span class="split">|</span>
+                <a rel="nofollow" href="{:U('Home/Sign/index')}">注册</a>
+            </div>
+
+
+        </if>
     </div>
 </div>
 </div>
 <block name="nav">
 
 </block>
+
+
 <block name="content">
 
 </block>
+
 
 <div class="gbottom">
     <div class="gbottom-nav">
@@ -122,6 +175,7 @@
     </div>
     <div class="gbottom-i">©2015果壳网&nbsp;京ICP备09043258号-2&nbsp;京公网安备1101052730</div>
 </div>
+<<<<<<< HEAD:guoke/Home/View/Public/index.html
         
     <script>
         var g_m_url = "http:\/\/m.guokr.com\/ask\/"
@@ -157,6 +211,37 @@
 	<script type="text/javascript" src="__PUBLIC__/Home/assets/Scripts/m.js"></script>
     <script type="text/javascript">
     BAIDU_CLB_fillSlotAsync('664451', 'bdadm-664451');</script>
+=======
+>>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5:guoke/Home/View/Public/index.html
 
+    <script src="__PUBLIC__/Admin/assets/js/jquery-1.8.3.min.js"></script>
+    <script>
+    $(function(){
+
+       
+       $("#gheaderNotice").click(function(event){ 
+            var r=$(this).find('#noticeBlock');
+            if(r.css('display')== "none" ) {
+                    r.show();
+            }else{
+                    r.hide();
+            }
+            event.stopPropagation();
+        });
+
+       $(document).click(function(event){
+            var r=$('#noticeBlock');
+            if(r.css('display')=="none" ) {
+                    r.show();
+            }else{
+                    r.hide();
+            }
+            event.preventDefault();
+       })
+
+
+
+    })
+    </script>
 </body>
 </html>
