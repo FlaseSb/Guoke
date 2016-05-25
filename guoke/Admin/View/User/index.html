@@ -17,6 +17,7 @@
                     
                     <div class="col-sm-2">
                       <div class="bk-margin-bottom-10">
+
                         <a href="{:U('Admin/User/add')}" id="addToTable" class="btn btn-info">Add<i class="fa fa-plus"></i></a>
 
                       </div>
@@ -38,6 +39,7 @@
                           <span class="caret"></span>
                        </button>
                        <ul class="dropdown-menu" role="menu">
+
                           <li><a href="{:U('Admin/User/index',array('page'=>2))}">2</a></li>
                           <li><a href="{:U('Admin/User/index',array('page'=>5))}">5</a></li>
                           <li><a href="{:U('Admin/User/index',array('page'=>10))}">10</a></li>
@@ -46,6 +48,7 @@
                     </div>
                     
                     <div class="col-sm-4">
+
                       <form class="search navbar-form"  action="{:U('Admin/User/index')}" method="get">
 
                           <div class="input-group input-search">
@@ -57,6 +60,7 @@
                       </form>
                     </div>
                   </div>
+
 
 
 
@@ -85,6 +89,7 @@
                       </tr>
                     </foreach>
                   </table>
+
 
                    <div class="col-md-offset-4 mt">
                    <div class="dataTables_paginate paging_bs_normal" id="datatable-editable_paginate">

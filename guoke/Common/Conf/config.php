@@ -7,6 +7,7 @@ return array(
 	'DB_NAME'   => 'guoke', // 数据库名
 	'DB_USER'   => 'root', // 用户名
 	'DB_PWD'    => '', // 密码
+
 	'DB_PORT'   => 3306, // 端口
 	// 'DB_PREFIX' => '', // 数据库表前缀 
 	'DB_CHARSET'=> 'utf8', // 字符集
@@ -18,6 +19,7 @@ return array(
 
 	//设置url模式
 	'URL_MODEL' => 2,
+
 	
 	'EmailUsername'=>'15068050659@163.com',
 	'EmailPassword'=>'lgg521',

@@ -19,7 +19,34 @@ class QuestionController extends Controller {
         
     }
     public function insert(){
-        var_dump($_POST);
+        // 接收用户id
+        // $uid=$_SESSION['Home']['Uid'];
+        // 接收post数据
+        $arr['sub_name']=!empty($_POST['question'])?$_POST['question']:die;
+        $arr['sub_msg']=$_POST['sub_msg'];
+
+        // 接收标签id
+        $tagid=$_POST['tags'];
+
+        $tanswer=M('qac_tag_answer');
+        $model=M();
+        $tag=M('qac_subject');
+        // 添加问题
+        $res=$tag->add($arr);
+        if(!empty($tagid)){
+            $tagarr=explode(',',$tagid);
+            $count=count($tagarr);
+            for ($i=0; $i <= $count-1; $i++) { 
+                // 问题id
+                $data['sub_id']=$res;
+                // 标签id
+                $data['tag_id']=$tagarr[$i];
+                //增加该标签问题数
+                $model->execute("update qac_tag set sub_num=sub_num+1 where tag_id='$tagarr[$i]'");
+                //插入到表中
+                $tanswer->add($data);
+            }
+        }
     }
     // 添加问题标签
     public function addtag(){

@@ -5,6 +5,7 @@ use Think\Controller;
 class UserController extends CommonController {
 	//用户列表显示板块
 
+
     public function index(){
         
         $p=I('get.page');
@@ -85,6 +86,7 @@ class UserController extends CommonController {
 
     	}
     }
+
 
 
 

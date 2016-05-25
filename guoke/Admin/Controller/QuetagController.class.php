@@ -101,7 +101,6 @@ class QuetagController extends CommonController {
     // 标签修改数据模块
     public function update(){
         Uploads('hp');
-        // var_dump($_POST);
         // var_dump($_FILES);
         // 接收post值
         $id=$_POST['id'];

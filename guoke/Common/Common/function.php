@@ -27,6 +27,7 @@
 
 	       $mail->AddAddress(trim($to), $name);  //设置收件的地址
 	       if (!$mail->Send()) {            //发送邮件
+
 	           return '发送失败:'.$mail->ErrorInfo;
 	       } else {
 	           return "发送成功";
@@ -49,6 +50,7 @@
 		        $this->error($upload->getError());    
 		    }else{// 上传成功        
 		        // $this->success('上传成功！'); 
+
 		        $str =$info[$filename]['savepath'].$info[$filename]['savename'];
 
 		        $_POST[$filename] = $str;
@@ -61,6 +63,7 @@
 		$verify = new \Think\Verify();    
 		return $verify->check($code, $id);
 	}
+
 
 
 
