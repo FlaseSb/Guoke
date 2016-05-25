@@ -115,6 +115,7 @@
                           </td>
                           <td rowspan="2" class="text-center" style="vertical-align: middle;">
                             <a href="{:U('Admin/Quetag/save',array('id'=>$vo['tag_id']))}" class="btn btn-warning">修改</a>
+
                             <if condition="$vo.is_locking eq 0 ">
                               <a num="{$vo.tag_id}" id="locking" class="btn btn-danger" lock="0">未锁定</a>
                             <else />
@@ -129,6 +130,7 @@
                               <img src="__PUBLIC__/Admin/assets/img/tagimg.png">
                             <else />
                               <img width="48px" height="48px" src="__PUBLIC__{$vo.tag_img}" alt="">
+
                             </if>
                           </td>
                           

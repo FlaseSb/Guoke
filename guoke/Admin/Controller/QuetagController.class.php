@@ -114,6 +114,7 @@ class QuetagController extends CommonController {
         //判断数据库中是否有图片
         if($filename!=null){
             $path=$_SERVER['DOCUMENT_ROOT'].'/Public'.$filename;
+
             unlink($path);
             $res=$tag->where('tag_id='.$id)->save($data);
         }else{

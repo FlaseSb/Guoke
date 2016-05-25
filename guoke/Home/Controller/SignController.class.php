@@ -134,6 +134,7 @@ class SignController extends Controller {
           $m->commit();
           cookie('User_Nickname',$_POST['User_Nickname'],array('expire'=>3600,'prefix'=>'HomeUser_'));
           cookie('User_Pwd',$_POST['User_Pwd'],array('expire'=>3600,'prefix'=>'HomeUser_'));
+
           $this->ajaxReturn(1);
         }else{
           $m->rollback();

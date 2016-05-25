@@ -5,6 +5,7 @@ class IndexController extends PublicController {
     public function index(){
 
     	// var_dump($_COOKIE);
+
     	$this->display();
 
     }
