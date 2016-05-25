@@ -1,22 +1,6 @@
-﻿<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7 screen-scroll"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8 screen-scroll"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9 screen-scroll"> <![endif]-->
-<html class="no-js screen-scroll">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1" />
-        <meta name="Keywords" content="文艺科学,果壳小组, 果壳,果壳网,科技,泛科技,智趣,生活,科普"/>
-        <meta name="Description" content="想为果壳网写稿，分享你的学识与见解？
-
-请和我联系：wuouou@guokr.com
-
-我们欢迎如下写作者：
-
-1. 如果你对科学写作保有热情，希望磨练你的选题能力和写作技巧，欢迎请加入我们的“科学人的秘密发动机”。在那里，我将和科学人的编辑们就你的作品与你进行讨论，给出建议。你可以联系我领取邀请码..."/>
-        <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no" />
-        <meta name="format-detection" content="telephone=no" />
-        <title>用文字展现科学，给我投稿吧！ |  果壳网 科技有意思</title>
+﻿<extend name="Public/index"/>
+<block name="style">
+        <!-- <title>用文字展现科学，给我投稿吧！ |  果壳网 科技有意思</title> -->
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/6e7bcd6e.main.css" />
         <!--[if lt IE 9]><link rel="stylesheet" href="__PUBLIC__/Home/Write/css/e43d2adb.ie678.css" /><![endif]-->
     
@@ -24,9 +8,11 @@
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/assets/Content/7a149cf0.skin.css" />
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/assets/Content/26b86cdf.post.css" />
     <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/assets/Content/26b86cdf.post.css" />
+</block>
 
-</head>
-<body>
+
+
+<block name="content">
     <div class="gheader-wrap">
         
     <!-- 引入百度编辑器     -->
@@ -37,8 +23,6 @@
     <!-- jquery -->
     <script src="__PUBLIC__/Home/assets/Scripts/jquery-1.8.3.min.js"></script>
 
-    <!-- 引入公共的导航文件 -->
-    <include file="Public/navigation" />
             
 
     <form action="{:U('Home/Write/update')}" method="post" nctype="multipart/form-data">
@@ -60,7 +44,7 @@
 				<div class="group-info-detail">
                     <div class="group-info-name">
                         <h3>选择分类　</h3>
-                            <select onchange="change(this)" name="Fid">
+                            <select onchange="change(this)" name="Fid" style="border:1px solid #ccc">
                                 <!-- 取出顶级分类 -->
                                 <option value="">--请选择--</option>
                                 <foreach name="res" item="v">
@@ -68,7 +52,7 @@
                                 </foreach>
                             </select>
                             <!-- 取出次级分类,默认隐藏,name名一样,如果选择了次级,次级分覆盖父级 -->
-                            <select id="city" name="Fid" style="display:none">
+                            <select id="city" name="Fid" style="display:none;border:1px solid #ccc">
 
                             </select>
     					</div>
@@ -106,20 +90,7 @@
                     </div>
                 <div class="gbottom">
             </form>
-        <div class="gbottom-nav">
-            <a href="http://www.guokr.com/about/">关于我们</a>
-            <a href="http://www.guokr.com/zone/job/">加入果壳</a>
-            <a href="http://www.guokr.com/spread/">媒体报道</a>
-            <a href="http://www.guokr.com/question/446161/">帮助中心</a>
-            <a href="http://www.guokr.com/event/home/">果壳活动</a>
-            <a href="http://www.guokr.com/help/policy/">免责声明</a>
-            <a href="http://www.guokr.com/contact/">联系我们</a>
-            <a href="http://m.guokr.com/">移动版</a>
-            <a href="http://www.guokr.com/mobile/">移动应用</a>
-        </div>
-        <div class="gbottom-i">
-            ©2015果壳网&nbsp;京ICP备09043258号-2&nbsp;京公网安备1101052730
-        </div>
+        
     </div>
     
 
@@ -161,5 +132,4 @@
             },'json');
         }
     </script>
-</body>
-</html>
+</block>

@@ -4,7 +4,11 @@ use Think\Controller;
 class ScienceController extends Controller {
     public function index(){
         // var_dump($_GET);
+        //用于瀑布流分类的选择
         $yid=I('get.id');
+        //用于父分类查询子分类
+        $tid=I('get.tid');
+        // var_dump($yid);
         // die;
     	//实例化表
     	$user=M('sc_class');
@@ -12,7 +16,25 @@ class ScienceController extends Controller {
     	$where="Class_Pid=0 and display=1";
     	//查询父分类
     	$res = $user->field('id,Class_Title')->where($where)->select();
-    	// var_dump($res);
+        //查询是否有子类,有子类给标识,用于显示三角形
+        foreach ($res as $k => $v) {
+            $sonres=$user->where("Class_Pid=".$v['id']." and display=1")->select();
+            if ($sonres) {
+                $res[$k]['sonres']=1;
+            }else{
+                $res[$k]['sonres']=0;
+            }
+        }
+        //利用父分类查询子分类显示
+        if (!empty($tid)) {
+            $pname=$user->field('Class_Title')->where("id=".$tid)->select();
+            $pname=$pname[0]['Class_Title'];
+            $sonval=$user->field('id,Class_Title')->where("Class_Pid=".$tid." and display=1")->select();
+            $this->assign('pname',$pname);
+            $this->assign('sonval',$sonval);
+        }
+        
+    	// var_dump($sonval);
     	// die;
     	// 结果给前台
         $this->assign('yid',$yid);
