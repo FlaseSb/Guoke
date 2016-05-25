@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-﻿<extend name="Public/Public"/>
-=======
+
 ﻿<extend name="Public/index"/>
->>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
 <block name="style">
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/3100651d.list.css" />
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/affa772f.main.css" />
@@ -179,11 +176,7 @@
             <ul class="gh-sub-nav-list">
       
 
-<<<<<<< HEAD
 
-    <foreach name="res" item="v">
-        <li class="oneli"><a href="{:U('Home/Science/index',array('id'=>$v['id']))}">{$v['Class_Title']}</a><a href=""><i class="gnarrow-down"></i></a></li>
-=======
     <!-- 遍历分类 -->
     <foreach name="res" item="v">
         <!-- 一级分类 -->
@@ -198,7 +191,6 @@
             </a>
             </if>
         </li>
->>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
 
     </foreach>            
     
@@ -218,16 +210,7 @@
     <div class="container">
         <div id="innerNav" class="gh-inner-nav-wrap">
             <div class="gh-inner-nav">
-<<<<<<< HEAD
-                <h2><span class="gh-inner-nav-title">学科</span></h2>
-                <ul class="gh-inner-nav-list">
 
-                    
-                    <li class="current">
-                        <a href="/scientific/subject/">全部</a>
-                    </li>
-
-=======
                 <h2><span class="gh-inner-nav-title">{$pname}</span></h2>
                 <ul class="gh-inner-nav-list">
 
@@ -236,7 +219,6 @@
                             <a href="{:U('Home/Science/index',array('id'=>$v['id']))}">{$v['Class_Title']}</a>
                         </li>
                     </foreach>
->>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
                     
                     
                 </ul>
