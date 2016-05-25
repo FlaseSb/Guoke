@@ -44,8 +44,13 @@ class LoginController extends Controller {
             $_SESSION['Home']['Uid']=$res['U_id'];
             $_SESSION['Home']['Email']=$res['User_Email'];
         if($_POST['checked']=='true'){
-            cookie('useremail',$res['User_Email'],array('expire'=>3600,'prefix'=>'HomeUser_'));
-            cookie('password',$res['User_Pwd'],array('expire'=>3600,'prefix'=>'HomeUser_'));
+            $J=M('userInfo');
+            $where="`U_PID`='".$res['U_id']."'";
+            $r=$J->field('User_Nickname')->where($where)->find();
+            // echo $J->_sql();
+            cookie('User_Nickname',$r['User_Nickname'],array('expire'=>10800,'prefix'=>'HomeUser_'));
+            cookie('User_Pwd',$res['User_Pwd'],array('expire'=>10800,'prefix'=>'HomeUser_'));
+            
         }
             $this->ajaxReturn($res['U_id']);
         }
