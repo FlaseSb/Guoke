@@ -3,7 +3,7 @@ namespace Admin\Controller;
 use Think\Controller;
 //后台的文章分类管理控制器.
 class ScienceclassController extends CommonController {
-	//文章顶级分类显示板块
+    //文章顶级分类显示板块
     public function index(){
         $user=M('sc_class');
         //查询顶级分类
@@ -33,14 +33,14 @@ class ScienceclassController extends CommonController {
         // 查询结果赋值给前台
         $this->assign('res',$res);
         //解析模板
-    	$this->display();
+        $this->display();
     }
 
     //分类添加显示板块
     public function add(){
-    	if(IS_POST){
+        if(IS_POST){
             $user=M('sc_class');
-    		// var_dump($_POST);
+            // var_dump($_POST);
             // die;
             if (empty($_POST['Class_Title'])) {
                 $this->error('分类名不允许为空',U('Admin/Science/index'));
@@ -53,14 +53,14 @@ class ScienceclassController extends CommonController {
                 $this->error('添加失败',U('Admin/Scienceclass/index'),3);
             }
             
-    	}else{
-    	//分类的添加页面显示
+        }else{
+        //分类的添加页面显示
         $user=M('sc_class');
         //查询顶级分类
         $res=$user->where('Class_Pid=0')->select();
         $this->assign('res',$res);
-    	$this->display();
-    	}
+        $this->display();
+        }
     }
     //文章子分类显示板块
     public function subclass(){

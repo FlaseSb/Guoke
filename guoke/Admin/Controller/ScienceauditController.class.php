@@ -3,7 +3,7 @@ namespace Admin\Controller;
 use Think\Controller;
 //后台的文章审核管理控制器.
 class ScienceauditController extends CommonController {
-	//文章审核显示板块
+    //文章审核显示板块
     public function index(){
         $user=M('sc_article');
         //获取每页显示的数量
@@ -41,7 +41,7 @@ class ScienceauditController extends CommonController {
         $this->assign('res',$res);
         $this->assign('pages',$pages);
         //解析模板
-    	$this->display();
+        $this->display();
     }
 
     //审核成功板块

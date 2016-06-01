@@ -1,4 +1,4 @@
-﻿<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
@@ -96,7 +96,7 @@
                 <div class="focus">
                     <div class="focus-content">
 
-                        	<foreach name="articleimgres" item="v">
+                            <foreach name="articleimgres" item="v">
                             <a href="#" data-gaevent="home_recommend_articles_focus:v1.1.1.1:article" target="_blank">
                                 {$v.Img}
                             </a>
@@ -132,12 +132,12 @@
                 </div>
                 <div class="recos-article">
                     <ul class="gclear">
-                        	
-                        	<foreach name="articletitleres" item="v">
+                            
+                            <foreach name="articletitleres" item="v">
                             <li class="stress">
                             <h2><a href="http://www.guokr.com/article/441485/" data-gaevent="home_recommend_articles:v1.1.1.1:article" title="{$v.Title}" target="_blank">{$v.Title}</a></h2>
                             </li>
-                        	</foreach>
+                            </foreach>
                         
                     </ul>
                 </div>
@@ -1076,7 +1076,7 @@ void main()
     <script src="__PUBLIC__/Home/assets/Scripts/main.js"></script>
     <script src="__PUBLIC__/Home/assets/Scripts/index.js"></script>
     <!-- cbjs.baidu.com is too slow for us so let's mirroring it -->
-	<script type="text/javascript" src="__PUBLIC__/Home/assets/Scripts/m.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/assets/Scripts/m.js"></script>
     <script type="text/javascript">
     BAIDU_CLB_fillSlotAsync('624091', 'bdadm-624091');
     BAIDU_CLB_fillSlotAsync('624095', 'bdadm-624095');
@@ -1088,8 +1088,8 @@ void main()
     BAIDU_CLB_fillSlotAsync('633161', 'bdadm-633161');
     BAIDU_CLB_fillSlotAsync('624092', 'bdadm-624092');</script>
     <script src="__PUBLIC__/Home/assets/Scripts/jquery-1.8.3.min.js"></script>
-	<script type="text/javascript">
-		$('.focus-content').find('img').css('width','330px').css('height','255');
-	</script>
+    <script type="text/javascript">
+        $('.focus-content').find('img').css('width','330px').css('height','255');
+    </script>
 </body>
 </html>

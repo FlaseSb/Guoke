@@ -117,6 +117,9 @@ $(function(){
            var md5pass=$.md5(password);
            var check=$('#permanent:checked').val();
 
+
+           // console.log(check);
+
            $.ajax({
              url:"{:U('Home/Login/logindo')}",
              data:{email:email,pass:md5pass,checked:check},
