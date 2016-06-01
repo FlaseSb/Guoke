@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-//后台的用户管理控制器.
+//后台的文章分类管理控制器.
 class ScienceclassController extends CommonController {
 	//文章顶级分类显示板块
     public function index(){
@@ -132,29 +132,4 @@ class ScienceclassController extends CommonController {
             echo '删除失败';
         }
     }
-
-    public function ajaxSeek(){
-        $user=M('sc_class');
-        $ctitle=I('post.Class_Title');
-        //查询顶级分类
-        $res=$user->where("Class_Title like '%".$ctitle."%'")->select();
-        // 遍历判断每个顶级分类下面是否有子类
-        foreach ($res as $k => $v) {
-            //把是否显示改成文字
-            if ($v['display']==1) {
-                $res[$k]['display']='是';
-            } else {
-                $res[$k]['display']='否';
-                
-            }
-        }
-        var_dump($res);
-        echo '111';
-    }
-
-
-
-
-
-
 }

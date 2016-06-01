@@ -13,7 +13,12 @@
 
 
 <block name="content">
+
     <div class="gheader-wrap">
+
+    <div id="move" class="side-qr-code" style="position:fixed;top:500px;right:150px;z-index:999;">                                    
+        <img src="/Public/Home/assets/Images/zqkqb0rvqhnvbjpa4qqsm5sstypta0t3gnay_b2vwgqyaaaasgaaaepq.jpg">        
+    </div>
         
     <!-- 引入百度编辑器     -->
     <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
@@ -31,7 +36,7 @@
 
 
     <!-- 后期在此传入SESSION用户ID -->
-    <input type="hidden" name="User_Id" value="">
+    <input type="hidden" name="User_Id" value="<?php echo $_SESSION['Home']['Uid'] ?>">
     <!-- -- -->
 
 
@@ -72,8 +77,15 @@
                             <h1 id="articleTitle">
                                 <input type="text" name="Title" style="border:1px solid #ccc;width:150px;height:25px;">
                             </h1>
-
                         </div>
+                        
+                        
+                        <div class="group-title-header gclear" style="margin-top:-30px;margin-bottom:-1px;">
+                            <h3 id="articleTitle">
+                                格式规范:文章内容中必须带有一张及以上图片,请选择合适的分类.
+                            </h3>
+                        </div>
+
 
                         <div class="post-txt">
                            
@@ -86,14 +98,28 @@
 
                             
                         </div>
-                        
+
+
+
+                        <div class="side">
+        
+
+
+      
+        
+        
+    
+
+
+
                     </div>
                 <div class="gbottom">
             </form>
         
     </div>
+        
+        
     
-
 
     <script type="text/javascript">
         //实例化编辑器
@@ -132,4 +158,6 @@
             },'json');
         }
     </script>
+
+    
 </block>

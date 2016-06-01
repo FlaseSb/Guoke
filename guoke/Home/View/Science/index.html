@@ -1,5 +1,4 @@
-
-﻿<extend name="Public/index"/>
+<extend name="Public/index"/>
 <block name="style">
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/3100651d.list.css" />
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/affa772f.main.css" />
@@ -168,14 +167,13 @@
     <span class="yid" style="display:none">{$yid}</span>
 
     <!-- 导航   -->
-    <div class="gh-sub-nav-wrap" id="subNav" style="margin-top:-10px">
+    <div class="gh-sub-nav-wrap" id="subNav" style="margin-top:40px;">
         <div class="gh-sub-nav">
             <h1>
                 <a href="{:U('Home/Science/index',array('id'=>0))}" class="gh-sub-nav-title" href="/scientific/"><img src="../Picture/22bbc83e.logo.png" alt="科学人"></a>
             </h1>
             <ul class="gh-sub-nav-list">
       
-
 
     <!-- 遍历分类 -->
     <foreach name="res" item="v">
@@ -196,7 +194,7 @@
     
 
             </ul>
-            <a class="icon icon-file" href="/scientific/all/archive/" title="点击查看归档"></a>
+            
             <div class="gh-sub-nav-hidden">
                 <a class="gh-sub-nav-btn" id="innerNavBtn" href="javascript:void 0;">
                     
@@ -210,7 +208,6 @@
     <div class="container">
         <div id="innerNav" class="gh-inner-nav-wrap">
             <div class="gh-inner-nav">
-
                 <h2><span class="gh-inner-nav-title">{$pname}</span></h2>
                 <ul class="gh-inner-nav-list">
 
@@ -236,12 +233,12 @@
 <li id="clones" class="lis" style="display:none">
     <div class="one">
         <span class="oneclass">
-            <a href="#">
+            <a>
                 
             </a>
         </span>
         <span class="twoclass">
-            <a href="#">
+            <a>
                 
             </a>
         </span>
@@ -274,27 +271,27 @@
 
 
 
-		
+        
 
         
         
-		<ul class="gywm">
+        <ul class="gywm">
             <a href="#"  target="_blank">
                 <div class="imgtext">
                     <img src="__PUBLIC__/Home/assets/Images/239b2091.i-logo.png">
                     <p>关于我们</p>
                 </div>
             </a>
-            <a href="#" target="_blank">
+            <a href="{:U('Home/Write/index')}" target="_blank">
                 <div class="imgtext mb">
                     <img src="__PUBLIC__/Home/assets/Images/89e5a66b.flight-logo.png">
                     <p>我要投稿</p>
                 </div>
             </a>
-		</ul>
+        </ul>
         
         
-		
+        
 
  <ul class="uls">
  </ul>
@@ -345,7 +342,6 @@
                 p++;
             //取ID
             var id=$('.yid').html();
-            // alert(id);
             //ajax
             $.post(url,{p:p,id:id},function(data){
                 // 循环遍历创建元素
@@ -359,15 +355,13 @@
                     //淡入显示
                     newLi.fadeIn();
                     //判断是否为空,等于空代表是没有父分类,当前就是父分类
-                    if (data[i]['pcname']==null) {
+                    if (data[i]['pcname']=='') {
                         //隐藏
                         newLi.find('.oneclass').css('display','none');
                         //修改背景色
                         newLi.find('.twoclass').css('backgroundColor','#f00');
                     }else{
-                    //不是父类
-                    //修改li内容
-                    newLi.find('.oneclass').find('a').html(data[i]['pcname']);
+                        newLi.find('.oneclass').find('a').html(data[i]['pcname']);
                     }
                     //URL,点击转到每个文章的文章内容页
                     var urla="{:U('Home/Article/index')}"+"?id="+data[i]['id'];
@@ -423,10 +417,6 @@
         $('.four').find('img').css('width','100%');
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 588a3fdb7fbf905acca9ee8c6432c710a590faa5
         
     </script>
 </block>

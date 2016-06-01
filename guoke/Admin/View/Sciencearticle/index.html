@@ -66,29 +66,29 @@
                     <table class="table table-bordered table-striped mb-none" id="datatable-editable">
                       <thead>
                         <tr>
-                          <th width="300px">缩略图</th>
-                          <th width="100px">文章ID</th>
-                          <th width="100px">上线</th>
-                          <th width="300px">发表用户账号</th>
+                          <th width="300px" height="35px">缩略图</th>
+                          <th width="10%">文章ID</th>
+                          <th width="10%">上线</th>
+                          <th width="25%">发表用户账号</th>
                           <th>上传时间</th>
                         </tr>
                       </thead>
                       <tr class="gradeX">
                         <td rowspan="3" class="sid">{$v.Img}</td>
-                        <td class="ssid edit_name classname">{$v.id}</td>
-                        <td>{$v.Display}</td>
-                        <td class="disp">{$v.User_Email}</td>
-                        <td>{$v.Time}</td>
+                        <td class="ssid edit_name classname actions">{$v.id}</td>
+                        <td class="actions">{$v.Display}</td>
+                        <td class="disp actions">{$v.User_Email}</td>
+                        <td class="actions">{$v.Time}</td>
                         
                       </tr>
                       <tr>
-                        <th colspan="2">文章标题</th>
+                        <th colspan="2" height="35px">文章标题</th>
                         <th>文章分类</th>
-                        <th>操作 (查看文章,审核通过,打回)</th>
+                        <th>操作 (查看文章,编辑,删除)</th>
                       </tr>
                       <tr>
-                        <td colspan="2">{$v.Title}</td>
-                        <td>{$v.Class_Title}</td>
+                        <td colspan="2" class="actions">{$v.Title}</td>
+                        <td class="actions">{$v.Class_Title}</td>
                         <td class="actions">
                           <a href="{:U('Admin/Scienceaudit/content',array('id'=>$v['id']))}" class="on-default remove-row btn_del" title="查看文章"><i class="fa fa-folder-open"></i></a>　
 
@@ -122,12 +122,14 @@
               var id=$(this).parents('table').find('.ssid').html();
               //url
               var url="{:U('Admin/Sciencearticle/ajaxdel')}";
-              //ajax删除
-              $.post(url, {id:id});
               //this赋值
               var td=$(this);
+              //ajax删除
+              $.post(url, {id:id});
               //淡出
               td.parents('table').fadeTo("slow", 0.01, function(){
+                //删除hr
+                td.parents('table').next('hr').remove();
                 //删除表格
                 td.parents('table').remove();
               });
