@@ -2,6 +2,14 @@
 <block name="content">
   
 <script src="__PUBLIC__/Admin/assets/js/jquery-1.8.3.min.js"></script>
+        <div class="textareas" style="width:400px;height:300px;position:fixed!important;top:300px;left:620px;z-index:999;background:#fff;border:1px solid #ccc;display:none;">
+          <form class="text-center" action="{:U('Admin/Scienceaudit/repulse')}" method="post">
+            <h4><b>打回意见</b></h4>
+            <input class="repulsehdn" type="hidden" name="id" value="0">
+            <textarea class="textcontent" name="Text" id="" cols="50" rows="10"></textarea>
+            <button class="bk-margin-5 btn btn-default repulsebtn" type="submit">确定</button>
+          </form>
+        </div>
 
          <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -58,17 +66,17 @@
 
                   <?php if (empty($res)): ?>
                     <script type="text/javascript">
-                      $('.number').remove();
+                      $('.number').find('.bk-margin-bottom-10').remove();
                     </script>
-                    <p>查询不到搜索的内容</p>
+                    <p>无记录</p>
                   <?php else: ?>
                     <foreach name="res" item="v"> 
                       <table class="table table-bordered table-striped mb-none" id="datatable-editable">
                         <thead>
                           <tr>
                             <th width="300px">缩略图</th>
-                            <th width="200px">文章ID</th>
-                            <th width="300px">发表用户账号</th>
+                            <th width="20%">文章ID</th>
+                            <th width="30%">发表用户账号</th>
                             <th>上传时间</th>
                           </tr>
                         </thead>
@@ -92,7 +100,7 @@
 
                             <a href="javascript:love(0);" class="on-default edit-row btn_edit compile" title="通过审核"><i class="fa fa-gavel"></i></a>
                             　
-                            <a href="#" class="on-default edit-row btn_edit" title="打回文章"><i class="fa fa-reply"></i></a>
+                            <a href="#" class="on-default edit-row btn_edit repulse" title="打回文章"><i class="fa fa-reply"></i></a>
                             　
                           </td>
                         </tr>
@@ -119,20 +127,40 @@
             $('.compile').click(function(){
               //获取id
               var id=$(this).parents('table').find('.ssid').html();
+              //this赋值
+              var td=$(this);
               //url
               var url="{:U('Admin/Scienceaudit/ajaxaudit')}";
               //ajax审核通过
-              $.post(url, {id:id});
-              //this赋值
-              var td=$(this);
-              //淡出
-              td.parents('table').fadeTo("slow", 0.01, function(){
-                //删除表格
-                td.parents('table').remove();
+              $.post(url, {id:id},function(data){
+                if (data==1) {
+                  //淡出
+                  td.parents('table').fadeTo("slow", 0.01, function(){
+                  //删除水平线
+                  td.parents('table').next('hr').remove();
+                  //删除表格
+                  td.parents('table').remove();
+                  });  
+                } else if(data==0){
+                  alert('系统繁忙,请稍后重试');                  
+                };
               });
             });
             
+            //点击弹出文本域层
+            $('.repulse').click(function() {
+              var id=$(this).parents('table').find('.ssid').html();
+              $('.textareas').fadeIn();
+              $('.repulsehdn').val(id);
+            });
             
+            $('.repulsebtn').click(function() {
+              var textcontent=$('.textcontent').val();
+              if (textcontent=='') {
+                $('.textareas').fadeOut();
+                return false;
+              };
+            });
             
             //动态更改缩略图大小
             $('.sid').find('img').css('width','280px');

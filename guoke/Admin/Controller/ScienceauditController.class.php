@@ -3,18 +3,18 @@ namespace Admin\Controller;
 use Think\Controller;
 //后台的文章审核管理控制器.
 class ScienceauditController extends CommonController {
-	//文章审核显示板块
+    //文章审核显示板块
     public function index(){
         $user=M('sc_article');
         //获取每页显示的数量
-        $num = !empty($_GET['num']) ? $_GET['num'] : 2;
+        $num = !empty($_GET['num']) ? $_GET['num'] : 6;
 
         //获取关键字
         if(!empty($_GET['keyword'])){
             //有关键字
-            $where = "sc_article.`Display`='0' and Title like '%".$_GET['keyword']."%'";
+            $where = "sc_article.`Display`='0' and sc_article.Repulse='0' and Title like '%".$_GET['keyword']."%'";
         }else{
-            $where = "sc_article.Display='0'";
+            $where = "sc_article.Display='0' and sc_article.Repulse='0'";
         }
 
 
@@ -41,15 +41,26 @@ class ScienceauditController extends CommonController {
         $this->assign('res',$res);
         $this->assign('pages',$pages);
         //解析模板
-    	$this->display();
+        $this->display();
     }
 
     //审核成功板块
     public function ajaxaudit(){
+            //增加审核成功标识
             $_POST['Display']=1;
+            //实例化文章表
             $user=M('sc_article');
+            //过滤数据
             $user->create();
+            //更新
             $res=$user->save();
+            // 结果集判断
+            if ($res) {
+                echo 1;
+            } else {
+                echo 0;
+            }
+            
     }
     //文章内容显示板块
     public function content(){
@@ -73,47 +84,22 @@ class ScienceauditController extends CommonController {
         //解析模板
         $this->display();
     }
-    //ajax修改
-    public function ajaxReva(){
-        //把是否显示文本改成数字
-        if ($_POST['display']=='是') {
-            $_POST['display']=1;
-        }else{
-            $_POST['display']=0;
-        }
-        //实例化表
-        $user=M('sc_class');
-        //数据过滤
-        $user->create();
-        //修改
-        $res=$user->save();
-        echo $res;
-        
-    }
-    //ajax删除
-    public function ajaxDel(){
-        $id=I('post.id');
-        //查询是否有子类
-        $user=M('sc_class');
-        //
-        $res=$user->where('Class_Pid='.$id)->select();
-        if($res){
-             echo '还有子类,不允许删除';
-             die;
-         }
-        //删除
-        $ress=$user->delete($id);
-        if ($ress) {
-            echo '删除成功';
-        }else{
-            echo '删除失败';
-        }
-    }
-
     
-
-
-
-
-
+    //文章打回意见处理
+    public function repulse(){
+        //增加打回标识
+        $_POST['Repulse']=1;
+        //实例化文章表
+        $article=M('sc_article');
+        //过滤数据
+        $article->create();
+        //更新数据
+        $res=$article->save();
+        //结果集判断
+        if ($res) {
+            $this->success('打回成功',U('Admin/Scienceaudit/index'),3);
+        } else {
+            $this->error('系统繁忙,请稍后重试',U('Admin/Scienceaudit/index'),3);
+        }
+    }
 }

@@ -3,7 +3,7 @@ namespace Admin\Controller;
 use Think\Controller;
 //后台的标签管理控制器.
 class QuetagController extends CommonController {
-	//标签列表显示板块
+    //标签列表显示板块
     public function index(){
         $tag=M('qac_tag');
         // 接收数据
@@ -70,19 +70,10 @@ class QuetagController extends CommonController {
         $this->assign('state',$ord);
         $this->assign('pages',$pages);
         $this->assign('res',$res);
-    	$this->display();
+        $this->display();
     }
 
-    //标签添加显示板块
-    public function add(){
-    	if(IS_POST){
-    		var_dump($_POST);
-    	}else{
-    	//标签的添加页面显示
-        //
-    	$this->display();
-    	}
-    }
+
 
     // 标签修改显示模块
     public function save(){
@@ -112,14 +103,13 @@ class QuetagController extends CommonController {
         $data['tag_img']=!empty($_POST['hp'])?$_POST['hp']:$filename;
         $data['tag_msg']=!empty($_POST['tag_msg'])?$_POST['tag_msg']:$msg;
         //判断数据库中是否有图片
-        if($filename!=null){
-            $path=$_SERVER['DOCUMENT_ROOT'].'/Public'.$filename;
-            unlink($path);
-            $res=$tag->where('tag_id='.$id)->save($data);
-        }else{
-            $res=$tag->where('tag_id='.$id)->save($data);
+        if(!empty($_POST['hp'])){
+            if($filename!=null){
+                $path=$_SERVER['DOCUMENT_ROOT'].'/Public'.$filename;
+                unlink($path);
+            }
         }
-
+        $res=$tag->where('tag_id='.$id)->save($data);
         if($res){
             $this->success('修改成功',U('Admin/Quetag/index'),1);
         }else{

@@ -3,7 +3,7 @@ namespace Admin\Controller;
 use Think\Controller;
 //后台的问题审核管理控制器.
 class QueexamineController extends CommonController {
-	//问题审核列表显示板块
+    //问题审核列表显示板块
     public function index(){
         // 接收数据
         $name=$_GET['name'];
@@ -35,8 +35,9 @@ class QueexamineController extends CommonController {
         $res=$sub->join('left join user_verify on qac_subject.user_id = user_verify.U_id')->where("is_examine='0'".$where)->order($order)->limit($limit)->select();
         foreach ($res as $k => $v) {
             $res[$k]['sub_name']=str_replace(keyword(),highlight(),$v['sub_name']);
+            $res[$k]['merge']=$sub->where('is_examine="1" and sub_name="'.$v['sub_name'].'"')->select();
         }
-        // var_dump($res);die;
+        // var_dump($res[3]['merge']);die;
         // 分页输出
         $pages=$page->show();
 
@@ -45,7 +46,7 @@ class QueexamineController extends CommonController {
         $this->assign('pages',$pages);
         $this->assign('num',$num);
         $this->assign('res',$res);
-    	$this->display();
+        $this->display();
     }
 
     // ajax通过模块
@@ -93,4 +94,26 @@ class QueexamineController extends CommonController {
             echo 0;
         }
     }
+
+    // 合并相同信息
+    public function merge(){
+        // 获取pid
+        $pid=$_POST['pid'];
+        // 获取当前id
+        $id=$_POST['id'];
+        // 获取当前用户id
+        $uid=$_POST['uid'];
+        $data['sub_id']=$pid;
+
+        $sub=M('qac_subject');
+        $ans=M('qac_answer');
+        $ta=M('qac_tag_answer');
+        $fol=M('qac_follow');
+
+        $sub->where('id='.$id)->delete();
+        $ans->where('sub_id='.$id)->save($data);
+        $ta->where('sub_id='.$id)->save($data);
+        $fol->where('sub_id='.$id)->save($data);
+    }
+
 }

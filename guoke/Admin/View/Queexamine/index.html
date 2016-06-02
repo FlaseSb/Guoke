@@ -77,7 +77,7 @@
                           <td><h4>{$vo.User_Email}</h4></td>
                           <td><h4>{$vo.answer_num}</h4></td>
                           <td><h4>{$vo.follow_num}</h4></td>
-                          <td rowspan="4" class="text-center" style="vertical-align: middle;">
+                          <td rowspan="3" class="text-center" style="vertical-align: middle;">
                             <a href="{:U('Admin/Queexamine/adopt',array('id'=>$vo['id']))}" class="btn btn-success">通过</a>
                             <a num="{$vo.id}" id="del" class="btn btn-danger">删除</a>
                           </td>
@@ -98,11 +98,16 @@
                         </tr>
                         <tr>
                           <th class="text-center" style="vertical-align: middle;">问题描述</th>
-                          <td colspan="2">
-                            {$vo.sub_msg|substr=0,300}
+                          <td colspan="2" style="width:300px;overflow:hidden;">
+                            {$vo.sub_msg}
                           </td>
                           <td class="text-center" style="vertical-align: middle;">
                             <a class="btn btn-info" id="msg" number="{$vo.id}">详细描述</a>
+                          </td>
+                          <td class="text-center">
+                            <if condition="$vo['merge'] neq '' ">
+                              <a num="{$vo.id}" id="merge" class="btn btn-warning"  pid="{$vo['merge'][0]['id']}" uid="{$vo['merge'][0]['user_id']}">合并</a>
+                            </if>
                           </td>
                         </tr>
                       </thead>
@@ -147,7 +152,21 @@
                 })
               })
             })
-
+          // 绑定合并
+          $('#merge').live('click',function(){
+            // 获取当前id
+            var id=$(this).attr('num');
+            // 获取相同id
+            var pid=$(this).attr('pid');
+            // 获取当前用户id
+            var uid=$(this).attr('uid');
+            var url="{:U('Admin/Queexamine/merge')}";
+            var merge=$(this);
+            // 发送ajax
+            $.post(url,{id:id,pid:pid,uid:uid},function(data){
+                merge.parents('table').remove();
+            })
+          })
           // 绑定删除
           $('#del').live('click',function(){
             var url="{:U('Admin/Queexamine/ajaxdel')}";

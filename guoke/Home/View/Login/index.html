@@ -115,6 +115,7 @@ $(function(){
            var password=$('#password').val();
            var check=$('#permanent:checked').val();
 
+
            $.ajax({
              url:"{:U('Home/Login/logindo')}",
              data:{email:email,pass:password,checked:check},

@@ -55,11 +55,17 @@
                  
  
                   <div class="panel-body col-md-7">
+
+                  <if condition="$Think.get.state eq 1">
+
                     排序方式:
                       <a href="{:U(Admin/Quetag/index,array('name'=>'tag_id','num'=>$state))}" class="bk-margin-5 btn btn-default btn-xs">ID <span class="glyphicon glyphicon-sort"></span></a>
                       <a  href="{:U(Admin/Quetag/index,array('name'=>'sub_num','num'=>$state))}" class="bk-margin-5 btn btn-default btn-xs">问题数<span class="glyphicon glyphicon-sort"></span></a>
                       <a href="{:U(Admin/Quetag/index,array('name'=>'follow_num','num'=>$state))}" class="bk-margin-5 btn btn-default btn-xs">关注数 <span class="glyphicon glyphicon-sort"></span></a>
                       <a href="{:U(Admin/Quetag/index,array('name'=>'is_hot','num'=>$state))}" class="bk-margin-5 btn btn-default btn-xs">热门 <span class="glyphicon glyphicon-sort"></span></a>
+
+                  </if>
+
                     </div>
                     <div class="btn-group col-sm-2" style="float:right;">
                        <button type="button" class="btn btn-default dropdown-toggle" 
@@ -145,7 +151,9 @@
 
                           <th class="text-center" style="vertical-align: middle;">标签描述</th>
                           <td colspan="4">
+
                             {$vo.tag_msg|substr=0,300}
+
                           </td>
                           <td class="text-center" style="vertical-align: middle;">
                             <a class="btn btn-info" id="msg" number="{$vo.tag_id}">详细描述</a>

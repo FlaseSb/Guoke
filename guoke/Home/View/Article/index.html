@@ -1,14 +1,33 @@
+<!-- 头像备用语句 -->
+<!-- <img src="__PUBLIC__{$v.User_pic}" width="50px" alt=""> -->
+
+
+
+
 <extend name="Public/index"/>
 <block name="style">
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/affa772f.main.css" />
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/7a149cf0.skin.css" />
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/4ac1ff47.gbbcode.css" />
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/Content/a0687475.article.css" />
+        <style type="text/css">
+        #pages{
+            text-align:center;font-size:25px;
+        }
+        #pages div{
+            margin-top: 10px;
+            letter-spacing: 10px;
+        }
+        
+        </style>
 </block>
 
 
 
 <block name="content">
+
+    
+
     <!-- 引入百度编辑器 -->
     <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" charset="utf-8" src="__PUBLIC__/ueditor/ueditor.all.min.js"> </script>
@@ -18,19 +37,15 @@
     
     
 
-<div class="container article-page">
+<div class="container article-page" style="margin-top:40px;">
     <div class="main">
         <div class="content">
             <div class="content-th">
                 
-                <a class="label label-visual" href="http://www.guokr.com/scientific/channel/visual/" target="_blank" data-gaevent="scientific_tag:v1.1.1.1:scientific">视觉<b class="gnarrow-right"></b></a>
-                
-                <a class="label label-read" href="http://www.guokr.com/scientific/channel/brief/" target="_blank" data-gaevent="scientific_tag:v1.1.1.1:scientific">速读<b class="gnarrow-right"></b></a>
-                
-                <a class="label label-common" href="http://www.guokr.com/scientific/subject/astronomy/" target="_blank">天文<b class="gnarrow-right"></b></a>
-                <h1 itemprop="http://purl.org/dc/terms/title"id="articleTitle">{$res.Title}</h1>
+
+                <h1 itemprop="http://purl.org/dc/terms/title"id="articleTitle"><a href="{:U('Home/Article/index')}<?php echo "?id=".$_GET['id'] ?>" style="color:#000;">{$res.Title}</a></h1>
                 <p itemprop="http://rdfs.org/sioc/ns#note" class="ghide"></p>
-                <meta itemprop="http://purl.org/dc/terms/abstract" content="400多年前爆炸的一颗恒星，如今化为一团碎屑，仍在持续扩散。NASA花了15年时间持续观测，终于让我们能够“亲眼”看见这团碎屑的演变过程。" />
+               
                 
                 <div class="content-th-info">
                     
@@ -62,104 +77,121 @@
                     <div id="share" class="gfl share-box bdsharebuttonbox" data-author="{$res.User_Nickname} " data-tag="shareMain" data-xlnickname=""></div>
                     <div itemprop="http://rdfs.org/sioc/ns#has_disccussion" itemscope itemtype="http://schema.org/UserLike" class="gfr">
                         <meta itemprop="description" content="4" />
-                        <a data-gaevent="article_button_comment:article" href="javascript:void 0;" id="basketBtn" data-title="第谷超新星遗迹，动起来了！" data-url="http://www.guokr.com/article/441438/">收藏</a>
-                        <span class="gsplit">|</span>
-                        <a href="javascript:void 0;" id="recommendBt">
-                            推荐
-                            <span class="recom-num">(4)</span>
-                        </a>
+                        
 
 
 
                         <!-- 锚点链接,链接到网页最下方 -->
-                        <a data-gaevent="article_button_comment:article" href="#commentsReplyer" class="comment">发表评论</a>
+                        <a data-gaevent="article_button_comment:article" href="#commentsReplyer" class="comment sccommit">发表评论</a>
 
 
 
 
 
-                    </div>
+                    </div>  
                 </div>
 
                 <h2>你可能感兴趣</h2>
                 <ul class="recommend-articles-list" id="recommendArticleRelated" data-reckey="3db7">
-                    
                         
+                        <!-- 遍历出4个 -->
+                        <foreach name="loveresule" item="v">
                         <li>
-                            <a href="http://www.guokr.com/article/439411/" target="_blank" data-gaevent="article_interested:v1.1.1.1:article"><img src="../Picture/f6-jbe3gerce8zfjbi3tskocfpgjlxb1nofwci0zjlhkaqaafweaaepq.jpg" width="132" height="102" alt="哈勃拍到死亡星系的“幽灵之光”" title="哈勃拍到死亡星系的“幽灵之光”"></a>
-                            <a href="http://www.guokr.com/article/439411/" target="_blank"  class="recommend-article-title"  data-gaevent="article_interested:v1.1.1.1:article">哈勃拍到死亡星系的“幽灵之光”</a>
+                            <a href="{:U('Home/Article/index',array('id'=>$v['id']))}" target="_blank" data-gaevent="article_interested:v1.1.1.1:article">
+                                <!-- 图片 -->
+                                {$v.Img}
+                            </a>
+                            <a href="#" target="_blank"  class="recommend-article-title"  data-gaevent="article_interested:v1.1.1.1:article"><!-- 内容 -->{$v.Content}</a>
                         </li>
-                        
-                    
-                        
-                        <li>
-                            <a href="http://www.guokr.com/article/440477/" target="_blank" data-gaevent="article_interested:v1.1.1.1:article"><img src="../Picture/0aqwn4710gdjh1fyzgtper-x7jgjfbi-4fy2ily6uwvkaqaaugaaafbo.png" width="132" height="102" alt="高能预警，宇宙级焰火绽放在2018年" title="高能预警，宇宙级焰火绽放在2018年"></a>
-                            <a href="http://www.guokr.com/article/440477/" target="_blank"  class="recommend-article-title"  data-gaevent="article_interested:v1.1.1.1:article">高能预警，宇宙级焰火绽放在2018年</a>
-                        </li>
-                        
-                    
-                        
-                        <li>
-                            <a href="http://www.guokr.com/article/440139/" target="_blank" data-gaevent="article_interested:v1.1.1.1:article"><img src="../Picture/86xc1qru5ygapo7dmr5dsuoot-xmcnp24ubt30hktixkaqaa_aaaaepq.jpg" width="132" height="102" alt="我们发现了银河系里的“波浪”" title="我们发现了银河系里的“波浪”"></a>
-                            <a href="http://www.guokr.com/article/440139/" target="_blank"  class="recommend-article-title"  data-gaevent="article_interested:v1.1.1.1:article">我们发现了银河系里的“波浪”</a>
-                        </li>
+                        </foreach>
+
+
                         
                     
                         
-                        <li>
-                            <a href="http://www.guokr.com/article/438455/" target="_blank" data-gaevent="article_interested:v1.1.1.1:article"><img src="../Picture/gxfmpjb_rjhheuaffeuebbdb9cdu6ipnhsddjkcpworkaqaa6waaaepq.jpg" width="132" height="102" alt="我用郭守敬望远镜“捕获”了超高速恒星" title="我用郭守敬望远镜“捕获”了超高速恒星"></a>
-                            <a href="http://www.guokr.com/article/438455/" target="_blank"  class="recommend-article-title"  data-gaevent="article_interested:v1.1.1.1:article">我用郭守敬望远镜“捕获”了超高速恒星</a>
-                        </li>
+                        
                         
                     
                 </ul>
             </div>
         </div>
         <div class="cmts" id="comments">
-            
-                            <div class="cmts-title">
-                                <p class="gfl">热门评论</p>
-                            </div>
-                            <ul class="cmts-list">
+            <!-- 是否有热门评论 -->
+            <?php if (!empty($hot)): ?>
+                <div class="cmts-title">
+                    <p class="gfl">热门评论</p>
+                </div>
+                <ul class="cmts-list">
                                 
+                <foreach name="hot" item="v">
+                <li class="reply3001172">
+                    <div class="cmt-img cmtImg pt-pic">
+                        <a href="#" title="{$v.User_Nickname}" data-ukey="21gcae" target="_blank">
+                            <img width="48" height="48" src="__PUBLIC__{$v.User_pic}">
+                        </a>
+                        
 
-            <li id="reply3001057">
-                <div class="cmt-img cmtImg pt-pic">
-                    <a href="http://www.guokr.com/i/0123374390/" title="祣" data-ukey="21gcae" target="_blank">
-                        <img width="48" height="48" src="../Picture/l1t404tzd6clksam08bv5txenibgo9fyyquhlyigd1ygaaaaoaaaaepq.jpg">
-                    </a>
-                    
-                </div>
-                <div class="pt-txt">
-                    <span class="cmt-info">2016-05-13 13:59</span>
-                    <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/0123374390/" data-ukey="21gcae" target="_blank">祣</a>
-                    
-                    <div class="cmt-content gbbcode-content cmtContent"><p>进来被背景音乐吓飞鼠标 (。-`ω´-)</p></div>
-                    <span class="cmt-do">
+                    </div>
+                    <div class="pt-txt">
+                        <span class="cmt-info">{$v.Cm_Time}</span>
+                        <!-- 评论ID -->
+                        <span class="comid" style="display:none">{$v.id}</span>
+                        <!-- 用户ID -->
+                        <span class="uid" style="display:none">{$v.U_PID}</span>
+                        <!-- 用户名 -->
+                        <a class="cmt-author cmtAuthor" href="#" data-ukey="21gcae" target="_blank">{$v.User_Nickname}</a>
                         
-                        
-                        
+                        <div class="cmt-content gbbcode-content cmtContent">{$v.Cm_Content}</div>
+                        <span class="cmt-do">
                             
-                            <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001057">顶</a>
+                                
+                                
                             
-                        
-                        
-                        [<span class="cmt-do-num">30</span>]
-                        <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
-                        
-                    </span>
-                </div>
-            </li>
+                            
+                            
+                            <!-- 判断用户是否登录 -->
+                            <?php if (isset($_SESSION['Home']) && !empty($_SESSION['Home'])): ?>
 
+                                <?php if ($v['U_PID']==$_SESSION['Home']['Uid']) : ?>
+                                    <span class="commentdel" style="cursor:pointer;color:red;">删除</span>
+                                <?php endif ?>
+
+                                <!-- 判断当前评论点赞状态 -->
+                                <if condition="$v.ynz eq 0"> 
+                                    <a class="cmt-do-quote zambia" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001057">顶</a>
+                                    <span class="cancelzambia" style="display:none;cursor:pointer;">取消顶</span>
+                                <elseif condition="$v.ynz eq 1"/>
+                                    <a class="cmt-do-quote zambia" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001057" style="display:none;">顶</a>
+                                    <span class="cancelzambia"  style="cursor:pointer;">取消顶</span>
+                                </if>
+
+    
+                                [<span class="cmt-do-num">{$v.likeCount}</span>]
+                                
+                                <a data-gaevent="article_reply_comment:article" class="cmt-do-quote comment commit" id="comment" href="#commentsReplyer" data-operation="quoteComment">评论</a>
+                            <?php else: ?>
+                                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="{:U('Home/Login/index')}" data-operation="likeComment" data-id="3001057">顶</a>
+
+                                [<span class="cmt-do-num">{$v.likeCount}</span>]
+
+                                <a class="cmt-do-quote" href="{:U('Home/Login/index')}" data-operation="quoteComment">评论</a>
+                            <?php endif ?>
+                            
+                        </span>
+                    </div>
+                </li>
+                </foreach>
+            <?php endif ?>
+            
 
                 <!-- 显示所有评论按钮,js控制,点击会显示评论,隐藏按钮 -->
-                <p class="show-all-reply">显示所有评论</p>
+                <p class="show-all-reply" {$style}>显示所有评论</p>
 
-            <div class="cmts-title cmts-hide">
+            <div class="cmts-title cmts-hide" {$styles}>
                 <div class="gfl">全部评论</div>
             </div>
             <!-- 所有评论的ul,每个li是一条评论 -->
-            <ul class="cmts-list cmts-all cmts-hide">
+            <ul class="cmts-list cmts-all cmts-hide" {$styles}>
 
 
 
@@ -176,350 +208,82 @@
 
 
 
+<?php if (empty($commentres)): ?>
+    <div style="text-align:center;font-size:25px;margin-top:10px;">暂无评论</div>
+<?php else: ?>
+    
+
+<foreach name="commentres" item="v">
+                
+    <li class="reply3001172">
+        <div class="cmt-img cmtImg pt-pic">
+            <a href="http://www.guokr.com/i/0144802463/" title="{$v.User_Nickname}" data-ukey="2e7man" target="_blank">
+                <img width="48" height="48" src="__PUBLIC__{$v.User_pic}">
+            </a>
+            
+            <span class="cmt-floor">{$v.floor}楼</span>
+            
+        </div>
+        <div class="pt-txt">
+            <span class="cmt-info">{$v.Cm_Time}</span>
+            <!-- 评论ID -->
+            <span class="comid" style="display:none">{$v.id}</span>
+            <!-- 用户ID -->
+            <span class="uid" style="display:none">{$v.U_PID}</span>
+            <!-- 用户名 -->
+            <a class="cmt-author cmtAuthor" href="#" data-ukey="2e7man" target="_blank">{$v.User_Nickname}</a>
+            
+            <div class="cmt-content gbbcode-content cmtContent">{$v.Cm_Content}</div>
+            <span class="cmt-do">
+                
 
 
 
                 
-<li id="reply3001172">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/0144802463/" title="gundamfire" data-ukey="2e7man" target="_blank">
-            <img width="48" height="48" src="../Picture/dfjp0wsfas4zoarfugq9ldxe2fndlqqea5eviuyq5lqgaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">11楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-14 09:37</span>
-        <!-- 用户ID -->
-        <span class="uid" style="display:none">1</span>
-        <!-- 文章ID -->
-        <span class="scid" style="display:none">1</span>
-        <!-- 用户名 -->
-        <a class="cmt-author cmtAuthor" href="#" data-ukey="2e7man" target="_blank">用户名</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><blockquote>引用<a data-nickname="安然_莲自在" href="http://www.guokr.com/n/%E5%AE%89%E7%84%B6_%E8%8E%B2%E8%87%AA%E5%9C%A8/">@安然_莲自在</a> 的话：程晓陶强调，当城市气象灾害发生时，作为公众做好个人防范也非常重要，首先要对自己所居住的环境要有一个风险评估，比如是否会有山洪、内涝的威胁存在；哪些地方是容易积水地段；其次，遇到突发灾害，如何进行自救；...</blockquote><p>家里和必经之路附近有哪些容易发生泥石流的斜坡，在暴雨天气尽量避免；有哪些路段容易形成积水，开车的时候注意绕行；台风即将来临的时候迅速回家不要在外蹦跶，尤其不要在大树下和简易房中停留；等等。</p></div>
-        <span class="cmt-do">
-            
-            
-            
                 
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001172">顶</a>
+                <!-- 判断用户是否登录 -->
+                <?php if (isset($_SESSION['Home']) && !empty($_SESSION['Home'])): ?>
+                    <?php if ($v['U_PID']==$_SESSION['Home']['Uid']) : ?>
+                        <span class="commentdel" style="cursor:pointer;color:red;">删除</span>
+                    <?php endif ?>
+
+                    <if condition="$v.ynz eq 0"> 
+                        <a class="cmt-do-quote zambia" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001057">顶</a>
+                        <span class="cancelzambia" style="display:none;cursor:pointer;">取消顶</span>
+                    <elseif condition="$v.ynz eq 1"/>
+                        <a class="cmt-do-quote zambia" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001057" style="display:none;">顶</a>
+                        <span class="cancelzambia" style="cursor:pointer;">取消顶</span>
+                    </if>
+
+                    [<span class="cmt-do-num">{$v.likeCount}</span>]
+                    
+                    <a data-gaevent="article_reply_comment:article" class="cmt-do-quote comment commit" id="comment" href="#commentsReplyer" data-operation="quoteComment">评论</a>
+                <?php else: ?>
+                    <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="{:U('Home/Login/index')}" data-operation="likeComment" data-id="3001057">顶</a>
+
+                    [<span class="cmt-do-num">{$v.likeCount}</span>]
+
+                    <a class="cmt-do-quote" href="{:U('Home/Login/index')}" data-operation="quoteComment">评论</a>
+                <?php endif ?>
+
                 
-            
-            
-            [<span class="cmt-do-num">0</span>]
-            
-
-            <!-- <if/> --><!-- 后期的SISSION -->
-            <!-- <a class="cmt-do-quote" href="{:U('Home/Login/index')}" data-operation="quoteComment">评论</a> -->
-
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote comment" id="comment" href="#commentsReplyer" data-operation="quoteComment">评论</a>
-            <!-- </if> -->
-        </span>
-    </div>
-</li>
+            </span>
+        </div>
+    </li>
 
 
+</foreach>
+
+<div id="pages">
+  {$pages}
+</div>
 
 
+<?php endif ?>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<li id="reply3001106">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/0912680479/" title="cccp" data-ukey="f3dwrj" target="_blank">
-            <img width="48" height="48" src="../Picture/io9jck4lxxftk7gmyqpb3lmjyxifcmseppt-3tvmffwgaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">1楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-13 17:43</span>
-        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/0912680479/" data-ukey="f3dwrj" target="_blank">cccp</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><p>杀</p></div>
-        <span class="cmt-do">
-            
-            
-            
-                
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001106">顶</a>
-                
-            
-            
-            [<span class="cmt-do-num">1</span>]
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment" >评论</a>
-            
-        </span>
-    </div>
-</li>
-
-<li id="reply3001111">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/0363036291/" title="氰化物真好吃" data-ukey="6054lf" target="_blank">
-            <img width="48" height="48" src="../Picture/zckgmodatnogyqzs_0j23rygpm_omuaa_u8v0wozpjwgaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">2楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-13 17:58</span>
-        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/0363036291/" data-ukey="6054lf" target="_blank">氰化物真好吃</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><p>欸，nasa的apod和itod居然没有推送图片！</p><blockquote>来自<a href="http://www.guokr.com/i/0820651124/">山寨果壳.wp</a></blockquote></div>
-        <span class="cmt-do">
-            
-            
-            
-                
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001111">顶</a>
-                
-            
-            
-            [<span class="cmt-do-num">1</span>]
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
-            
-        </span>
-    </div>
-</li>
-
-
-
-<li id="reply3001114">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/0237888034/" title="国产零零七" data-ukey="3xmrky" target="_blank">
-            <img width="48" height="48" src="../Picture/gh1n1fev-vjgjqpfttjytgul2mfb98rkgzagfk9q9qegaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">3楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-13 18:30</span>
-        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/0237888034/" data-ukey="3xmrky" target="_blank">国产零零七</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><p>如果找不到伴星的存在，那就偏向于支持另一个主流触发机制，即两颗白矮星合二为一导致质量超出极限，不会有恒星残存下来。</p><p>==</p></div>
-        <span class="cmt-do">
-            
-            
-            
-                
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001114">顶</a>
-                
-            
-            
-            [<span class="cmt-do-num">1</span>]
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
-            
-        </span>
-    </div>
-</li>
-
-
-
-<li id="reply3001121">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/0601323175/" title="遗失名字的行者" data-ukey="9y0fxj" target="_blank">
-            <img width="48" height="48" src="../Picture/i1hlbeeymwh7pod6o3yxerc9m_aqe7um2zumzc5oayegaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">4楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-13 19:46</span>
-        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/0601323175/" data-ukey="9y0fxj" target="_blank">遗失名字的行者</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><p>好大的一坨。。。。。</p></div>
-        <span class="cmt-do">
-            
-            
-            
-                
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001121">顶</a>
-                
-            
-            
-            [<span class="cmt-do-num">0</span>]
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
-            
-        </span>
-    </div>
-</li>
-
-<li id="reply3001141">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/0736985440/" title="yang_36857" data-ukey="c6s5ls" target="_blank">
-            <img width="48" height="48" src="../Picture/lns6gy0deuxe_yqz2yqm9mahr__fy0mjsf9j9eovxiagaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">5楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-13 21:47</span>
-        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/0736985440/" data-ukey="c6s5ls" target="_blank">yang_36857</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><p>深渊鲸舒畅的离开了~</p></div>
-        <span class="cmt-do">
-            
-            
-            
-                
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001141">顶</a>
-                
-            
-            
-            [<span class="cmt-do-num">1</span>]
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
-            
-        </span>
-    </div>
-</li>
-
-
-
-<li id="reply3001160">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/1713511813/" title="视窗手机系统" data-ukey="sc6i6d" target="_blank">
-            <img width="48" height="48" src="../Picture/jmc99wdil-jsmgwopiflpscgf1s7owtfjhsknnshghigaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">6楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-14 01:41</span>
-        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/1713511813/" data-ukey="sc6i6d" target="_blank">视窗手机系统</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><p>气体密度差异是核聚变反应后期等离子体中不是氢原子的聚变原子太多，活跃度降低，局部堆积，导致旋转的非球体的星体上的偏离几何中心到重心上旋转的可能性增大，爆炸时才不一样。 不知这种猜测是否合理？</p></div>
-        <span class="cmt-do">
-            
-            
-            
-                
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001160">顶</a>
-                
-            
-            
-            [<span class="cmt-do-num">0</span>]
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
-            
-        </span>
-    </div>
-</li>
-
-
-
-<li id="reply3001170">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/0236058672/" title="AAArthur" data-ukey="3wjk1c" target="_blank">
-            <img width="48" height="48" src="../Picture/sge_jab9agrrqolu2e3vfpbm6jzxbbqzczgysxrsxaggaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">7楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-14 09:15</span>
-        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/0236058672/" data-ukey="3wjk1c" target="_blank">AAArthur</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><p>15年就能动这么多，很难想象是1572年发生爆炸的</p></div>
-        <span class="cmt-do">
-            
-            
-            
-                
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001170">顶</a>
-                
-            
-            
-            [<span class="cmt-do-num">2</span>]
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
-            
-        </span>
-    </div>
-</li>
-
-
-
-<li id="reply3001175">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/1756890807/" title="济公" data-ukey="t209mf" target="_blank">
-            <img width="48" height="48" src="../Picture/b9iuczwwrtarfuzjym6tupowjzizyu6kuhqil60v9umgaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">8楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-14 09:54</span>
-        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/1756890807/" data-ukey="t209mf" target="_blank">济公</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><p>那么大一个棉花糖，我可以吃多久啊</p></div>
-        <span class="cmt-do">
-            
-            
-            
-                
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001175">顶</a>
-                
-            
-            
-            [<span class="cmt-do-num">0</span>]
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
-            
-        </span>
-    </div>
-</li>
-
-
-
-<li id="reply3001188">
-    <div class="cmt-img cmtImg pt-pic">
-        <a href="http://www.guokr.com/i/0794170993/" title="天降龙虾" data-ukey="d4tu9d" target="_blank">
-            <img width="48" height="48" src="../Picture/ommn4idbkm8k-pjuqoeuwchflzpr8xdpyb4pdt5iz2ugaaaaoaaaaepq.jpg">
-        </a>
-        
-        <span class="cmt-floor">9楼</span>
-        
-    </div>
-    <div class="pt-txt">
-        <span class="cmt-info">2016-05-14 11:00</span>
-        <a class="cmt-author cmtAuthor" href="http://www.guokr.com/i/0794170993/" data-ukey="d4tu9d" target="_blank">天降龙虾</a>
-        
-        <div class="cmt-content gbbcode-content cmtContent"><p>脑洞大开的瞬间，有怪兽即将从遗迹中发育成形的预感。。。。。。。。。</p></div>
-        <span class="cmt-do">
-            
-            
-            
-                
-                <a class="cmt-do-quote" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001188">顶</a>
-                
-            
-            
-            [<span class="cmt-do-num">0</span>]
-            <a data-gaevent="article_reply_comment:article" class="cmt-do-quote" href="javascript:void 0;" data-operation="quoteComment">评论</a>
-            
-        </span>
-    </div>
-</li>
 
             </ul>
-            <div class=" cmts-hide ">
+            <div class="cmts-hide" {$styles}>
             
 
 
@@ -531,42 +295,49 @@
             </div>
             <div id="commentsReplyer" class="cmts-do"><p></p>
                 <h3 id="replyer">你的评论</h3>
-            
-                <!-- 未登录时显示的文本框 -->
-                {$notext}
-                
-                
-                
-            
-            
+           
             </div>
-            <form action="{:U('Home/Article/upload')}" method="post">
+            
 
-
-
-            <!-- 隐藏域,后期传输用户ID -->
-            <!-- <input id="scid" type="hidden" name="Wid" value=""> -->
-
-
-
-
-            <!-- 隐藏域,传输文章ID -->
             <input id="scid" type="hidden" name="Wid" value="{$res.id}">
-            <!-- 隐藏域,传输被回复的用户的ID -->
-            <input id="pid" type="hidden" name="Pid" value="0">
-            <!-- 登录时显示的文本框 -->
-            <!-- {$yestext} -->
-            <script id="editor" name="Cm_Content" type="text/plain" style="width:638px;height:300px;"></script>
-            <button style="border:1px solid green;background:#47B5E7;width:100px;height:30px;line-height:25px;cursor:pointer;margin-top:10px;" type="submit"><span class="icon-write"></span>发表</button>';
-            </form>
+            
+            <!-- 判断用户是否登录 -->
+            <?php if (isset($_SESSION['Home']) && !empty($_SESSION['Home'])): ?>
+                <!-- 登录时启用评论框 -->
+                <form action="{:U('Home/Article/upload')}" method="post">
+                <!-- 隐藏域,传输用户ID -->
+                <input id="User_Id" type="hidden" name="Uid" value="<?php echo $_SESSION['Home']['Uid']; ?>">
+                <!-- 隐藏域,传输文章ID -->
+                <input id="scid" type="hidden" name="Wid" value="{$res.id}">
+                <!-- 隐藏域,传输被回复的用户的ID -->
+                <input id="pid" type="hidden" name="Pid" value="0">
+                <script id="editor" name="Cm_Content" type="text/plain" style="width:638px;height:300px;"></script>
+                <button style="border:1px solid green;background:#47B5E7;width:100px;height:30px;line-height:25px;cursor:pointer;margin-top:10px;" type="submit"><span class="icon-write"></span>发表</button>
+                </form>
+            <?php else: ?>
+                <!-- 未登录时禁用评论框 -->
+                <div class="reply-box" style="height:150px;padding:15px;border:1px solid #ccc;"><p class="reply-info">请 <a rel="nofollow" href="{:U('Home/Login/index')}">登录</a> 发表评论</p></div>
+            <?php endif ?>
+
+            
+
+        
+
+
         </div>
     </div>
 
     <div class="side">
         
+
+
+        <!-- 后期过来写联接到用户个人页 -->
+
+
         <div class="author-info  clearfix">
-                <a class="author-pic" href="http://www.guokr.com/i/0721544490/">
-                    <img src="../Picture/_p5x377pntsla33_fd9jz8w8b8t4zxwshqpqs-dlqlygaaaaoaaaaepq.jpg" alt="{$res.User_Nickname}"/>
+                <a class="author-pic" href="
+                #">
+                    <img src="__PUBLIC__{$res.User_pic}" alt="{$res.User_Nickname}">
                 </a>
                 <div class="author-intro clearfix">
                     <span class="author-wrap">
@@ -653,22 +424,24 @@
 </script>
 <script type="text/javascript" src="__PUBLIC__/Home/assets/Script/jquery-1.8.3.js"></script>
 <script type="text/javascript">
-    //点击'显示所有评论'发AJAX
-    $('.show-all-reply').click(function(event) {
+    //点击'显示所有评论'
+    $('.show-all-reply').click(function() {
         //显示评论ul
         $('.cmts-hide').css('display','block');
         //隐藏'显示所有评论DIV'
         $('.show-all-reply').css('display','none');
-        //发送AJAX取评论
-        $.get("{:U('Home/Article/ajaxcomment')}", function(data) {
-            //返回评论排版
-        });
+        //文章ID
+        var wid=$('#scid').val();
+        //url
+        var url="{:U('Home/Article/ajaxCookie')}";
+        //ajax
+        $.post(url, {wid:wid});
     });
 
 
     //回复其他用户的回复
     //单击'评论'事件
-    $('.comment').click(function(){
+    $('.commit').click(function(){
         //获取用于传输被其回复的用户的用户ID
         var pid=$(this).parents('.pt-txt').find('.uid').html();
         //修改用于传输被其回复的用户的用户ID的隐藏域用于传输
@@ -682,5 +455,84 @@
         //把上述内容拼接,放入百度编辑器   
         UE.getEditor('editor').setContent('<blockquote>引用@'+'<a href="1">'+uname+'</a>'+' 的话：'+ucontent+' </blockquote><p>');
     })
+    //单击文章评论清空百度编辑器内容
+    $('.sccommit').click(function(){
+        UE.getEditor('editor').setContent('');
+    })
+    //当用户登录时启用此js
+    <?php if (isset($_SESSION['Home']) && !empty($_SESSION['Home'])): ?>
+        //点赞
+        $('.zambia').click(function(){
+            //点赞+1
+            var znum=+$(this).parents('li').find('.cmt-do-num').html()+1;
+            //获取当前操作用户ID
+            var uid=<?php echo $_SESSION['Home']['Uid']; ?>;
+            //获取当前评论ID
+            var likeid=$(this).parents('li').find('.comid').html();
+            var td=$(this);
+            // url
+            var url="{:U('Home/Article/ajaxZambia')}";
+            //ajax添加用户点赞
+            $.post(url,{Like_Uid:uid,Like_Lid:likeid},function(data) {
+                if (data==1) {
+                    //成功,修改元素
+                    td.parents('li').find('.cmt-do-num').html(znum);
+                    td.parents('li').find('.zambia').css('display','none');            
+                    td.parents('li').find('.cancelzambia').css('display','inline-block');
+                } else if(data==0){
+                    //失败,提示
+                    alert('系统繁忙,请稍后重试');
+                };
+            });
+        })
+        //取消点赞
+        $('.cancelzambia').click(function(){
+            //点赞-1
+            var znum=+$(this).parents('li').find('.cmt-do-num').html()-1;
+            //获取当前操作用户ID
+            var uid=<?php echo $_SESSION['Home']['Uid']; ?>;
+            //获取当前评论ID
+            var likeid=$(this).parents('li').find('.comid').html();
+            var td=$(this);
+            // url
+            var url="{:U('Home/Article/ajaxCancelZambia')}";
+            //ajax删除用户点赞
+            $.post(url,{uid:uid,likeid:likeid},function(data) {
+                if (data==1) {
+                    //成功,修改元素
+                    td.parents('li').find('.cmt-do-num').html(znum);
+                    td.parents('li').find('.zambia').css('display','inline-block');            
+                    td.parents('li').find('.cancelzambia').css('display','none');
+                } else if(data==0){
+                    //失败,提示
+                    alert('系统繁忙,请稍后重试');
+                };
+            });
+        })
+        //删除评论
+        $('.commentdel').click(function(){
+            //获取要删除的ID
+            var delid=$(this).parents('.pt-txt').find('.comid').html();
+            //url
+            var url="{:U('Home/Article/ajaxcommentdel')}";
+            //this赋值
+            var td=$(this);
+            //ajax删除
+            $.post(url, {id:delid}, function(data) {
+                if (data==1) {
+                    //淡出
+                    td.parents('.reply3001172').fadeTo("slow", 0.01, function(){
+                    //删除表格
+                    td.parents('.reply3001172').remove();
+                    });  
+                } else if(data==0){
+                    alert('系统繁忙,请稍后重试');
+                };
+            });
+        })
+    <?php endif ?>
+
+    //动态改变'您可能喜欢的'图片大小
+    $('.recommend-articles-list').find('img').css('width','127px').css('height','90px');
 </script>
 </block>

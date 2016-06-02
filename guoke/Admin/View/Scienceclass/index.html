@@ -20,7 +20,7 @@
                       </div>
                     </div>
                     
-                    <div class="btn-group col-sm-6">
+                    <div class="btn-group col-sm-10">
 
                        
                        <ul class="dropdown-menu" role="menu">
@@ -30,16 +30,7 @@
                        </ul>
                     </div>
                     
-                    <div class="col-sm-4">
-                      <form class="search navbar-form"  action="{:U('Admin/Scienceclass/index')}" method="get">
-                          <div class="input-group input-search">
-                            <input type="text" class="form-control bk-radius seekcname" name="keyword" id="q" placeholder="请输入分类名...">
-                            <span class="input-group-btn" style="width:0px">
-                              <button class="btn btn-default" id="formm"><i class="fa fa-search"></i></button>
-                            </span>
-                          </div>            
-                      </form>
-                    </div>
+                    
                   </div>
 
 
@@ -47,11 +38,11 @@
                   <table class="table table-bordered table-striped mb-none" id="datatable-editable">
                     <thead>
                       <tr>
-                        <th width="150px">ID</th>
-                        <th width="350px">顶级分类名</th>
+                        <th width="15%">ID</th>
+                        <th width="35%px">顶级分类名</th>
                         <!-- <th>查看子分类</th> -->
                         <th>是否显示(双击以更改)</th>
-                        <th width="300px">操作 ([查看子分类],编辑,删除)</th>
+                        <th width="30%">操作 ([查看子分类],编辑,删除)</th>
                       </tr>
                     </thead>
                     <foreach name="res" item="v"> 
@@ -117,7 +108,7 @@
                 if (data==1) {
                   td.html(val);
                 } else{
-                  alert('修改失败');
+                  alert('修改失败或与原名重复');
                 };
               });
               //隐藏
@@ -163,15 +154,6 @@
                 td.parents('tr').remove();
               });
             })
-
-
-            $('.seekcname').keyup(function() {
-              var val=$('.seekcname').val();
-              var url="{:U('Admin/Scienceclass/ajaxSeek')}";
-              $.post('url', {Class_Title:val}, function(data) {
-                
-              });
-            });
           </script>            
 
 </block>
