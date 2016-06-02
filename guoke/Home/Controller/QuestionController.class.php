@@ -30,7 +30,7 @@ class QuestionController extends Controller {
         $waitans=$ans->alias('a')->join('LEFT JOIN user_info u ON u.U_PID=a.user_id')->join('LEFT JOIN qac_subject s ON s.id=a.sub_id')->where('a.zan >=3 and a.is_like="0"')->order('a.ans_time desc')->limit(4)->select();
         // 最佳回答者
         $optimum=$ans->alias('a')->join('LEFT JOIN user_info u ON u.U_PID=a.user_id')->join('LEFT JOIN user_profile p ON p.U_PID=a.user_id')->order('a.zan desc')->limit(6)->select();
-        // var_dump($optimum);die;
+        // var_dump($newans);die;
         $this->assign('renwen',$renwen);
         $this->assign('optimum',$optimum);
         $this->assign('kexue',$kexue);
@@ -580,19 +580,15 @@ class QuestionController extends Controller {
         $ans=M('qac_answer');
         $uinfo=M('user_info');
 
-        if($uid=='' && $myid=''){
-            header('location:'.U('Home/Quetag/nopage'));
-            die;
-        }elseif($uid!='' && $myid!=''){
+        if(empty($myid) && empty($uid)){
             header('location:'.U('Home/Quetag/nopage'));
             die;
         }
 
         if(!empty($myid)){
             // 查询登入用户信息
-            $res=$uinfo->alias('i')->join('LEFT JOIN user_profile p ON p.U_PID=i.U_PID')->where('i.U_PID='.$myid)->select();
-
-            var_dump($myid);die;
+            $user=$uinfo->alias('i')->join('LEFT JOIN user_profile p ON p.U_PID=i.U_PID')->where('i.U_PID='.$myid)->select();
+            $this->assign('user',$user);
             // 查询用户回答
             $answer=$ans->alias('a')->join('LEFT JOIN qac_subject s ON s.id=a.sub_id')->where('a.user_id='.$myid)->select();
         }

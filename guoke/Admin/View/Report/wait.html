@@ -55,14 +55,14 @@
                               {$vo['bu'][0]['User_Nickname']}
                           </td>
                           <td  class="text-center" style="vertical-align: middle;">
-                            <a class="btn btn-warning">完成处理</a>
+                            <a class="btn btn-warning" rid="{$vo.r_id}" id="delr">删除举报</a>
                           </td>
                         </tr>
                         <tr class="text-center">
                           <th class="text-center" style="vertical-align: middle">举报时间</th>
                           <td colspan="4"><h4>{$vo.r_time}</h4></td>
                           <td class="text-center" style="vertical-align: middle;" colspan="1">
-                              <a class="btn btn-danger" id="del" bid="{$vo.bru_id}" bm="{$vo.b_r}" om="{$vo.o_r}" msgid="{$vo.rmsg_id}" type="{$vo.r_type}" rid="{$vo.r_id}">删除举报</a>
+                              <a class="btn btn-danger" id="del" bid="{$vo.bru_id}" bm="{$vo.b_r}" om="{$vo.o_r}" msgid="{$vo.rmsg_id}" type="{$vo.r_type}" rid="{$vo.r_id}" rmsg="{$vo.r_msg}">处理举报</a>
 
                           </td>
                         </tr>
@@ -117,15 +117,15 @@
           $('#del').live('click',function(){
             // 获取删除信息
             var type=$(this).attr('type');
-            var buid=$(this).attr('buid');
+            var buid=$(this).attr('bid');
             var msgid=$(this).attr('msgid');
             var bm=$(this).attr('bm');
             var om=$(this).attr('om');
             var rid=$(this).attr('rid');
+            var rmsg=$(this).attr('rmsg');
             var url="{:U('Admin/Report/del')}";
-
             var del=$(this);
-            $.post(url,{type:type,buid:buid,msgid:msgid,bm:bm,om:om,rid:rid},function(data){
+            $.post(url,{type:type,buid:buid,msgid:msgid,bm:bm,om:om,rid:rid,rmsg:rmsg},function(data){
               if(data==1){
                 del.parents('table').remove();
               }else{
@@ -146,6 +146,21 @@
               }
             })  
 
+          })
+
+          // 删除举报信息
+          $('#delr').live('click',function(){
+              // 获取id
+              var rid=$(this).attr('rid');
+              var d=$(this);
+              var url="{:U('Admin/Report/delr')}";
+              $.post(url,{id:rid},function(data){
+                if(data==1){
+                  d.parents('table').remove();
+                }else{
+                  alert('删除失败');
+                }
+              })
           })
           </script>
           

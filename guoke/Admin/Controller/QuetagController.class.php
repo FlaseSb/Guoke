@@ -64,9 +64,7 @@ class QuetagController extends CommonController {
 
         // 分页输出
         $pages=$page->show();
-        // var_dump($res);die;
 
-        // var_dump($res);
         $this->assign('state',$ord);
         $this->assign('pages',$pages);
         $this->assign('res',$res);
@@ -84,7 +82,7 @@ class QuetagController extends CommonController {
 
         $res=$sub->find($id);
         $tag_msg=htmlspecialchars_decode($res['tag_msg']);
-        // var_dump($res);
+
         $this->assign('res',$res);
         $this->assign('tag_msg',$tag_msg);
         $this->display();
@@ -92,7 +90,7 @@ class QuetagController extends CommonController {
     // 标签修改数据模块
     public function update(){
         Uploads('hp');
-        // var_dump($_FILES);
+        
         // 接收post值
         $id=$_POST['id'];
         $tag=M('qac_tag');
@@ -139,12 +137,11 @@ class QuetagController extends CommonController {
         $id=$_GET['id'];
         $tag=M('qac_tag');
         $res=$tag->where('tag_id='.$id)->select();
-        // var_dump($res);
+
         //将sub_msg转换为实体;
         $tag_msg=htmlspecialchars_decode($res['0']['tag_msg']);
 
         echo $tag_msg;
-        // $this->display();
 
     }
 

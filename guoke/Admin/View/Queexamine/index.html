@@ -79,7 +79,7 @@
                           <td><h4>{$vo.follow_num}</h4></td>
                           <td rowspan="3" class="text-center" style="vertical-align: middle;">
                             <a href="{:U('Admin/Queexamine/adopt',array('id'=>$vo['id']))}" class="btn btn-success">通过</a>
-                            <a num="{$vo.id}" id="del" class="btn btn-danger">删除</a>
+                            <a num="{$vo.id}" uid="{$vo.user_id}" msg="{$vo.sub_name}" id="del" class="btn btn-danger">删除</a>
                           </td>
                         </tr>
                         
@@ -106,7 +106,7 @@
                           </td>
                           <td class="text-center">
                             <if condition="$vo['merge'] neq '' ">
-                              <a num="{$vo.id}" id="merge" class="btn btn-warning"  pid="{$vo['merge'][0]['id']}" uid="{$vo['merge'][0]['user_id']}">合并</a>
+                              <a num="{$vo.id}" id="merge" class="btn btn-warning"  pid="{$vo['merge'][0]['id']}" msg="{$vo['merge'][0]['sub_name']}" uid="{$vo['merge'][0]['user_id']}">合并</a>
                             </if>
                           </td>
                         </tr>
@@ -160,10 +160,13 @@
             var pid=$(this).attr('pid');
             // 获取当前用户id
             var uid=$(this).attr('uid');
+            //问题名字
+            var msg=$(this).attr('msg');
+
             var url="{:U('Admin/Queexamine/merge')}";
             var merge=$(this);
             // 发送ajax
-            $.post(url,{id:id,pid:pid,uid:uid},function(data){
+            $.post(url,{id:id,pid:pid,uid:uid,msg:msg},function(data){
                 merge.parents('table').remove();
             })
           })
@@ -171,11 +174,13 @@
           $('#del').live('click',function(){
             var url="{:U('Admin/Queexamine/ajaxdel')}";
             var id=$(this).attr('num');
+            var uid=$(this).attr('uid');
+            var msg=$(this).attr('msg');
             // 获取当前$this
             var del=$(this);
             alert('确认删除');
-            $.get(url,{id:id},function(data){
-              // alert(data);
+
+            $.get(url,{id:id,uid:uid,msg:msg},function(data){
               if(data==1){
                 del.parents('table').remove();
               }else{

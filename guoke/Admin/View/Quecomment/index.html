@@ -6,7 +6,7 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
               <div class="panel panel-default bk-bg-white">
                 <div class="panel-heading bk-bg-white">
-                  <h6><i class="fa fa-table red"></i><span class="break"></span>问题列表</h6>              
+                  <h6><i class="fa fa-table red"></i><span class="break"></span>问题回答列表</h6>              
                   <div class="panel-actions">
                     <a href="#" class="btn-minimize"><i class="fa fa-caret-up"></i></a>
                     <a href="#" class="btn-close"><i class="fa fa-times"></i></a>
@@ -43,7 +43,7 @@
                     <div class="col-sm-4">
                       <form class="search navbar-form"  action="{:U('Admin/Quecomment/index')}" method="get">
                           <div class="input-group input-search">
-                            <input type="text" class="form-control bk-radius" name="keyword" id="q" placeholder="Search...">
+                            <input type="text" class="form-control bk-radius" name="keyword" id="q" placeholder="输入内容">
                             <span class="input-group-btn" style="width:0px">
                               <button class="btn btn-default" id="formm" type="submit"><i class="fa fa-search"></i></button>
                             </span>
@@ -57,7 +57,6 @@
                       <a href="{:U(Admin/Quecomment/index,array('name'=>'ans_id','num'=>$state))}" class="bk-margin-5 btn btn-default btn-xs">ID <span class="glyphicon glyphicon-sort"></span></a>
                       <a href="{:U(Admin/Quecomment/index,array('name'=>'zan','num'=>$state))}" class="bk-margin-5 btn btn-default btn-xs">支持数<span class="glyphicon glyphicon-sort"></span></a>
                       <a href="{:U(Admin/Quecomment/index,array('name'=>'is_like','num'=>$state))}" class="bk-margin-5 btn btn-default btn-xs">是否喜欢 <span class="glyphicon glyphicon-sort"></span></a>
-                      <a href="{:U(Admin/Quecomment/index,array('name'=>'is_like','num'=>$state))}" class="bk-margin-5 btn btn-default btn-xs">发布时间 <span class="glyphicon glyphicon-sort"></span></a>
                     </div>
   
                   <foreach name="res" item="vo" key="k" >
@@ -82,8 +81,7 @@
                             </if>
                           </td>
                           <td rowspan="4" class="text-center" style="vertical-align: middle;">
-                            <a href="{:U('Admin/Quecomment/save',array('id'=>$vo['id']))}" class="btn btn-warning">修改</a>
-                            <a num="{$vo.id}" id="del" class="btn btn-danger">删除</a>
+                            <a num="{$vo.ans_id}" uid="{$vo.user_id}" msg="{$vo.ans_msg}" id="del" class="btn btn-danger">删除</a>
                           </td>
                         </tr>
                         <tr class="text-center">
@@ -126,7 +124,7 @@
               // 获取msg
               var msg=$(this).attr('msg');
               var div=$('<div id="detailed" style="top:'+top+'px">'+msg+'</div>');
-              top=top-336;
+              top=top-250;
               $('#prent').append(div);
               div.animate({
                 top:+top+"px",
@@ -140,10 +138,11 @@
           $('#del').live('click',function(){
             var url="{:U('Admin/Quecomment/ajaxdel')}";
             var id=$(this).attr('num');
+            var msg=$(this).attr('msg');
+            var uid=$(this).attr('uid');
             // 获取当前$this
             var del=$(this);
-            alert('确认删除');
-            $.get(url,{id:id},function(data){
+            $.get(url,{id:id,msg:msg,uid:uid},function(data){
               // alert(data);
               if(data==1){
                 del.parents('table').remove();

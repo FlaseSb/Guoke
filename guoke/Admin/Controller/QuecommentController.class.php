@@ -65,5 +65,28 @@ class QuecommentController extends CommonController {
             echo 0;
         }
     }
-   
+   // 删除回答
+    public function ajaxdel(){
+        // 接收id
+        $id=$_GET['id'];
+        $msg=$_GET['msg'];
+        $uid=$_GET['uid'];
+        $ans=M('qac_answer');
+
+        $email=M('email');
+
+        $dat['uid']='1';
+        $dat['time']=date('Y-m-d H:i:s');
+        $dat['pid']=$uid;
+        $res=$ans->where('ans_id='.$id)->delete();
+        if($res){
+            $dat['msg']="您回答的".$msg."答案存在不合法信息,现已被删除";
+            $res=$email->add($dat);
+            if($res){
+                echo 1;
+            }else{
+                echo 0;
+            }
+        }
+    }
 }

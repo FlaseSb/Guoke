@@ -54,17 +54,15 @@
                           <td>
                               {$vo['bu'][0]['User_Nickname']}
                           </td>
-                          <td  class="text-center" style="vertical-align: middle;">
-                            <a class="btn btn-warning">完成处理</a>
+                          <td class="text-center" style="vertical-align: middle;" rowspan="2">
+                              <a class="btn btn-danger" id="delr" rid="{$vo.r_id}">删除</a>
+
                           </td>
                         </tr>
                         <tr class="text-center">
                           <th class="text-center" style="vertical-align: middle">举报时间</th>
                           <td colspan="4"><h4>{$vo.r_time}</h4></td>
-                          <td class="text-center" style="vertical-align: middle;" colspan="1">
-                              <a class="btn btn-danger" id="del" rid="{$vo.r_id}">删除举报</a>
-
-                          </td>
+                          
                         </tr>
                         <tr class="text-center">
                           <th class="text-center" style="vertical-align: middle;" colspan="6">举报内容</th>
@@ -113,33 +111,19 @@
             })
           })
 
-          // 删除举报信息
-          $('#del').live('click',function(){
-            // 获取删除信息
-            var rid=$(this).attr('rid');
-            var url="{:U('Admin/Report/isdel')}";
-            var del=$(this);
-            $.post(url,{rid:rid},function(data){
-              if(data==1){
-                del.parents('table').remove();
-              }else{
-                alert('删除失败');
-              }
-            })
-
-          })
-          // 绑定分类发送改变事件
-          $('#class').live('change',function(){
-            var url="{:U('Admin/Quetag/ajaxclass')}";
-            var id=$(this).parents('tr').find('td:eq(0)').find('h4').html();
-            var val=$(this).val();
-            var cla=$(this);
-            $.get(url,{id:id,state:val},function(data){
-              if(data==1){
-                cla.parents('table').remove();
-              }
-            })  
-
+         // 删除举报信息
+          $('#delr').live('click',function(){
+              // 获取id
+              var rid=$(this).attr('rid');
+              var del=$(this);
+              var url="{:U('Admin/Report/delr')}";
+              $.post(url,{id:rid},function(data){
+                if(data==1){
+                  del.parents('table').remove();
+                }else{
+                  alert('删除失败');
+                }
+              })
           })
           </script>
           

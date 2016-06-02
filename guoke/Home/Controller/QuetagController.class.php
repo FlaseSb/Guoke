@@ -38,7 +38,7 @@ class QuetagController extends Controller {
         // 查询满足条件总记录数
         $count=$subtag->where($where)->count();
         //实例化分页类
-        $page=new \Think\Page($count,3);
+        $page=new \Think\Page($count,10);
         // 获取limit参数
         $limit=$page->firstRow.','.$page->listRows;
 
@@ -83,6 +83,7 @@ class QuetagController extends Controller {
         $res=$tag->where($data)->select()[0];
         $msg=$res['tag_msg'];
         $res['tag_msg']=htmlspecialchars($res['tag_msg']);
+
         // 初始化一个数组
         $arr=array();
         $tf_id=$tf->where('uf_id='.$uid)->select();
@@ -98,8 +99,8 @@ class QuetagController extends Controller {
         $this->question($data['tag_id'],$state);
         // 调取查询相关标签方法
         $relevant=$tag->field('tag_name,tag_id,sub_num,tag_img')->where('state <> 1')->order('sub_num desc')->limit(5)->select();
+   
         $this->assign('relevant',$relevant);
-        // var_dump($res);die;
         $this->assign('res',$res);
         $this->assign('msg',$msg);
         $this->assign('tag_id',$tag_id);

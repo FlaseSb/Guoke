@@ -93,7 +93,6 @@
 		            <li class="gclear ">
 		                <span class="ask-multi-up">
 		                    <span class="ask-support-num">{$vo.zan}</span>
-		                    <span class="icon-support"></span>
 		                </span>
 		                <div class="gfl">
 		                    
@@ -126,7 +125,6 @@
 		            <li class="gclear ">
 		                <span class="ask-multi-up">
 		                    <span class="ask-support-num">{$vo.zan}</span>
-		                    <span class="icon-support"></span>
 		                </span>
 		                <div class="gfl">
 		                    
@@ -236,29 +234,7 @@
 	      </div>
 	</div>
 	<div class="gside">
-	    <div class="ask-index-list ask-index-help gclear">
-	        <h3 class="gfl">
-	            帮助
-	        </h3>
-	        <ul class="gfl" id="askHelpChange">
-	            
-	            <li class="gellipsis current">
-	            <a data-gaevent="ask_main_help:ask" class="gellipsis current" href="http://www.guokr.com/question/446444/" target="_blank">在果壳问答如何提问？</a>
-	            </li>
-	            
-	            <li class="gellipsis ">
-	            <a data-gaevent="ask_main_help:ask" class="gellipsis " href="http://www.guokr.com/question/446435/" target="_blank">在果壳问答，应该如何回答问题？</a>
-	            </li>
-	            
-	            <li class="gellipsis ">
-	            <a data-gaevent="ask_main_help:ask" class="gellipsis " href=" http://www.guokr.com/question/436807/" target="_blank">如何插入公式？</a>
-	            </li>
-	            
-	        </ul>
-	        <span class="cmts-title-page" id="askHelpChangeBtns">
-	            <a class="cmts-title-icon" title="上一个" href="javascript:void(0)"><span class="icon-left"></span></a><a class="cmts-title-icon" title="下一个" href="javascript:void(0)"><span class="icon-right"></span></a>
-	        </span>
-	    </div>
+	  
 	    <div class="ask-index-ad">
 	        <div id="bdadm-664451" class="side-advert"></div>
 	    </div>
@@ -289,8 +265,12 @@
 	            
 	        	<foreach name="optimum" item="vo" >
 	            <li class="gclear ">
-	                <a data-gaevent="ask_main_best_people:ask" href="http://www.guokr.com/ask/i/1960037643/" class="pt-pic" target="_blank">
-	                    <img src="__PUBLIC__{$vo.User_pic}"/>
+	                <a data-gaevent="ask_main_best_people:ask" href="" class="pt-pic" target="_blank">
+	                	<if condition="$vo.User_pic eq '' ">
+	                    	<img src="__PUBLIC__/Home/assets/Images/himg.png" width="48px" height="48px" />
+	                	<else /> 
+	                    	<img src="__PUBLIC__{$vo.User_pic}" width="48px" height="48px"/>
+	                	</if>
 	                </a>
 	                <div class="pt-txt">
 	                    <a data-gaevent="ask_main_best_people:ask" href="" target="_blank">{$vo.User_Nickname}</a>
@@ -298,7 +278,6 @@
 	                    </p>
 	                </div>
 	                <span class="ask-side-up">
-	                    <span class="icon-support"></span>
 	                    {$vo.zan}
 	                </span>
 	            </li>

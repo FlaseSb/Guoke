@@ -28,7 +28,7 @@ class ReportController extends CommonController {
         $rep=M('report');
         $user=M('user_info');
 
-        $res=$rep->where('r_state="1"')->select();
+        $res=$rep->where('r_state="1"')->order('r_time desc')->select();
 
         // 判断是否为空
         if(!empty($res)){
@@ -66,25 +66,35 @@ class ReportController extends CommonController {
         $bm=$_POST['bm'];//基本理由
         $om=$_POST['om'];//其他理由
         $rid=$_POST['rid'];//举报id
+        $rmsg=$_POST['rmsg'];//被举报内容
 
         $data['r_state']='1';
 
         $sub=M('qac_subject');
         $ans=M('qac_answer');
+        $fol=M('qac_follow');
         $rep=M('report');
         $ta=M('qac_tag_answer');
+        $email=M('email');
+
+        $dat['uid']='1';
+        $dat['time']=date('Y-m-d H:i:s');
+        $dat['pid']=$buid;
+
         // 判断类型
         if($type==1){
             $res=$sub->where('id='.$msgid)->select();
             // 查询是否有该信息
             if($res){
-                $res=$sub->where('id='.$msgid)->delete();
-                $ta->where('tf_id='.$msgid)->delete();
-                // 是否删除成功
-                if($res){
-                    $rep->where('r_id='.$rid)->save($data);
-                    echo 1;
-                }
+                $sub->where('id='.$msgid)->delete();
+                $ta->where('sub_id='.$msgid)->delete();
+                $fol->where('sub_id='.$msgid)->delete();
+                $ans->where('sub_id='.$msgid)->delete();
+                
+                $rep->where('r_id='.$rid)->save($data);
+                $dat['msg']="您的发布的".$rmsg."问题存在不合法信息,现已被删除";
+                $email->add($dat);
+                echo 1;
             }else{
                 $rep->where('r_id='.$rid)->save($data);
                 echo 1;
@@ -97,12 +107,26 @@ class ReportController extends CommonController {
                 // 是否删除成功
                 if($res){
                     $rep->where('r_id='.$rid)->save($data);
+                    $dat['msg']="您回答的".$rmsg."答案存在不合法信息,现已被删除";
+                    $email->add($dat);
                     echo 1;
                 }
             }else{
                 $rep->where('r_id='.$rid)->save($data);
                 echo 1;
             }
+        }
+    }
+
+    // 删除举报信息
+    public function delr(){
+        $data['r_id']=$_POST['id'];
+        $report=M('report');
+        $res=$report->where($data)->delete();
+        if($res){
+            echo 1;
+        }else{
+            echo 0;
         }
     }
 }   

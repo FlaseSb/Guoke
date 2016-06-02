@@ -33,7 +33,9 @@ class QuestionController extends CommonController {
         $limit=$page->firstRow.','.$page->listRows;
 
         $res=$sub->join('left join user_verify on qac_subject.user_id = user_verify.U_id')->where("is_examine='1'".$where)->order($order)->limit($limit)->select();
-
+        foreach ($res as $k => $v) {
+            $res[$k]['sub_msg']=htmlspecialchars($v['sub_msg']);
+        }
         // var_dump($res);die;
         // 分页输出
         $pages=$page->show();
@@ -133,17 +135,28 @@ class QuestionController extends CommonController {
     public function ajaxdel(){
         // 接收id
         $id=$_GET['id'];
+        $uid=$_GET['uid'];
+        $msg=$_GET['msg'];
         
         $sub=M('qac_subject');
-
-        // 执行删除
+        $ans=M('qac_answer');
+        $fol=M('qac_follow');
+        $ta=M('qac_tag_answer');
+        $email=M('email');
         $res=$sub->where('id='.$id)->delete();
-
-        // 判断是否删除
+        $dat['uid']='1';
+        $dat['time']=date('Y-m-d H:i:s');
+        $dat['pid']=$uid;
         if($res){
+            $fol->where('sub_id='.$id)->delete();
+            $ta->where('sub_id='.$id)->delete();
+            $ans->where('sub_id='.$id)->delete();
+            $dat['msg']="您的发布的".$msg."问题存在不合法信息,现已被删除";
+            $email->add($dat);
             echo 1;
         }else{
             echo 0;
         }
+        
     }
 }

@@ -79,7 +79,7 @@
                           <td><h4>{$vo.follow_num}</h4></td>
                           <td rowspan="4" class="text-center" style="vertical-align: middle;">
                             <a href="{:U('Admin/Question/save',array('id'=>$vo['id']))}" class="btn btn-warning">修改</a>
-                            <a num="{$vo.id}" id="del" class="btn btn-danger">删除</a>
+                            <a num="{$vo.id}" uid="{$vo.user_id}" msg="{$vo.sub_name}" id="del" class="btn btn-danger">删除</a>
                           </td>
                         </tr>
                         <tr class="text-center">
@@ -172,11 +172,12 @@
           $('#del').live('click',function(){
             var url="{:U('Admin/Question/ajaxdel')}";
             var id=$(this).attr('num');
+            var uid=$(this).attr('uid');
+            var msg=$(this).attr('msg');
             // 获取当前$this
             var del=$(this);
             alert('确认删除');
-            $.get(url,{id:id},function(data){
-              // alert(data);
+            $.get(url,{id:id,uid:uid,msg:msg},function(data){
               if(data==1){
                 del.parents('table').remove();
               }else{

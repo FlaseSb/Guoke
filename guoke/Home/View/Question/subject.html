@@ -156,12 +156,11 @@
         <div id="share" class="gfl share-box bdsharebuttonbox" data-tag="shareMain">
         </div>
         <div class="gfr">
-            <if condition="$que.user_id neq $uid ">
-                <a id="report" href="javascript:void(0)" class="red-link ghide" data-msgid="{$que.id}" data-uid="{$que.user_id}" data-type="1" data-title="{$que.sub_name}" <if condition="$que.User_pic eq '' "> data-img="__PUBLIC__/Home/assets/Images/handimg.jpg" <else /> data-img="__PUBLIC__/{$que.User_pic}"</if> style="display: inline;">
-                    举报
-                </a>
-            </if>
-            
+                <if condition="$que.user_id neq $uid ">
+                    <a id="report" href="javascript:void(0)" class="red-link ghide" data-msgid="{$que.id}" data-uid="{$que.user_id}" data-type="1" data-title="{$que.sub_name}" <if condition="$que.User_pic eq '' "> data-img="__PUBLIC__/Home/assets/Images/handimg.jpg" <else /> data-img="__PUBLIC__/{$que.User_pic}"</if> style="display: inline;">
+                        举报
+                    </a>
+                </if>
             <div class="basket-op">
                 <span class="gsplit">|</span>
                 <div id="basketTip" class="basket-tip-box" style="display: none;">
@@ -466,7 +465,7 @@
                     $('#blockWindow').css('display','none');
                     alert('举报成功');
                 }else{
-                    alert('举报失败');
+                    alert('举报失败,请登入');
                 }
             })
         })
