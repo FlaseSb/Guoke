@@ -15,9 +15,9 @@ class UserController extends CommonController {
 
         if(!empty($_GET['keyword'])){
             //有关键字
-            $where = "User_Email like '%".$_GET['keyword']."%'";
+            $where = "User_Email like '%".$_GET['keyword']."%' and User_profile.State=1";
         }else{
-            $where = '';
+            $where = 'User_profile.State=1';
         }
 
 
@@ -136,9 +136,9 @@ class UserController extends CommonController {
 
         if(!empty($_GET['keyword'])){
             //有关键字
-            $where = "User_Email like '%".$_GET['keyword']."%'";
+            $where = "User_Email like '%".$_GET['keyword']."%' and User_profile.State=1";
         }else{
-            $where = '';
+            $where = 'User_profile.State=1';
         }
 
 

@@ -7,7 +7,7 @@
 				<div class="row">
 					<div class="col-xs-2">
 						<div class="bk-avatar">
-							<img src="__PUBLIC__{$img}"  class="img-circle bk-img-100 bk-border-info bk-border-3x">
+							<img src="__PUBLIC__/{$img}"  class="img-circle bk-img-100 bk-border-info bk-border-3x">
 						</div>
 					</div>
 						<h4 class="ziti" style="font-size:25px;line-height:100px;float:left">{$name}</h4>
@@ -48,16 +48,22 @@
 	    <div role="tabpanel" class="tab-pane active" id="home">
 	    	<foreach name="res" item="v" >
 	    	<div class="bk-avatar huoqu"  data-toggle="modal" value="{$v['Au_Uid']}" data-target="#myModal" style="display:inline-block;margin-right:20px;margin-bottom:20px;cursor:pointer">
-	    		<img src="__PUBLIC__{$v['User_Pic']}" title="{$v['User_Nickname']}" class="img-circle bk-img-60 bk-border-primary bk-border-2x bk-border-darken User_Nickname">
+	    		<img src="{$v['User_Pic']}" title="{$v['User_Nickname']}" class="img-circle bk-img-60 bk-border-primary bk-border-2x bk-border-darken User_Nickname">
 	    	</div>
 	    	</foreach>
-	    </div>
+	   	</div>
 	  <!-- 结束1 -->
 
-	  <!-- 操作 最近动态 -->
-	   <!-- 结束2 -->
-	  </div>
-	</div>
+		<div role="tabpane1" class="tab-pane" id="profile">
+			<foreach name="tie" item="v" >
+			<div class="alert alert-warning">
+				<button type="button" class="close" data-dismiss="alert">×</button>
+				<h4 class="alert-heading">{$v.Post_Title}</h4>
+				<p>{$v.User_Nickname}</p>
+				<p>{$v.ji}</p>
+			</div>
+			</foreach>
+	  	</div>
 				<!--  -->
 			<div class="bk-bg-white bk-padding-top-15 bk-padding-bottom-15">
 				<form role="form" action="javascript:">
@@ -148,7 +154,7 @@
 				{id:val,bq:bq},
 				function(data){
 					// console.log(data.length);
-					$('.jk').attr('src','__PUBLIC__'+data[0].User_Pic);
+					$('.jk').attr('src',data[0].User_Pic);
 					var name=data[0].User_Nickname;
 					var email=data[0].User_Email;
 					//发帖
@@ -190,8 +196,7 @@
 					// console.log(data);
 					$('.tab-pane').children().remove();
 					for(var i=0;i<data.length;i++){
-
-						var f=$('<div class="bk-avatar huoqu"data-toggle="modal" value="'+data[i].Au_Uid+'" data-target="#myModal" style="display:inline-block;margin-right:20px;margin-bottom:20px;cursor:pointer"><img src="__PUBLIC__'+data[i].User_Pic+'" title="'+data[i].User_Nickname+'" class="img-circle bk-img-60 bk-border-primary bk-border-2x bk-border-darken User_Nickname"></div>');
+						var f=$('<div class="bk-avatar huoqu"data-toggle="modal" value="'+data[i].Au_Uid+'" data-target="#myModal" style="display:inline-block;margin-right:20px;margin-bottom:20px;cursor:pointer"><img src="'+data[i].User_Pic+'" title="'+data[i].User_Nickname+'" class="img-circle bk-img-60 bk-border-primary bk-border-2x bk-border-darken User_Nickname"></div>');
 						$('.tab-pane').append(f);
 					}
 				}

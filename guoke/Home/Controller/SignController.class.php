@@ -133,7 +133,7 @@ class SignController extends Controller {
         if($name&&$re){
           $m->commit();
           cookie('User_Nickname',$_POST['User_Nickname'],array('expire'=>3600,'prefix'=>'HomeUser_'));
-
+          cookie('User_Uid',$id,array('expire'=>10800,'prefix'=>'HomeUser_'));
           cookie('User_Pwd',$_POST['User_Pwd'],array('expire'=>3600,'prefix'=>'HomeUser_'));
 
           $this->ajaxReturn(1);
@@ -143,6 +143,65 @@ class SignController extends Controller {
 
 
       }
+
+
+      public function xiougai(){
+        if(IS_AJAX){
+
+         $emailsubject = "用户修改密码";//邮件标题 
+         $email = trim($_POST['email']); //邮箱 
+         $regtime = time();//修改时间;
+         $token = md5($regtime.$email); //创建用于激活识别码 
+         $user=M('userVerify');
+         $arr=array('token'=>$token);
+         // var_dump($arr);
+         $res=$user->where("`User_Email`='$email'")->save($arr);
+         // die;
+         $lj = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].U('Home/Sign/xioudo',array('verify'=>$token));
+         $emailbody = "亲爱的".$email."：<br/>修改密码验证。<br/>请点击链接激活您的帐号。<br/> 
+             <a href=".$lj." target= 
+         '_blank'>".$lj."</a><br/> 
+             如果以上链接无法点击，请将它复制到你的浏览器地址栏中进入访问，该链接24小时内有效。";  
+
+         $r=sendMail($email,$emailsubject,$emailbody);
+         // $this->assign('email',$email);
+         $this->ajaxReturn(1);
+        }else{
+         $this->display();
+        }
+      }
+
+
+      public function xioudo(){
+        if(IS_POST){
+          $pwd=md5($_POST['password']);
+
+          $m=M('userVerify');
+          $arr=array('User_Pwd'=>$pwd);
+          $res=$m->where("`User_Email`='".$_POST['email']."'")->save($arr);
+          // var_dump($res);
+
+          if($res){
+             $this->redirect('Home/Login/index'); 
+          }
+
+        }else{
+
+        $verify = stripslashes(trim($_GET['verify'])); 
+
+        $user=M('userVerify');
+        $where= "status='1' and `token`='$verify'";
+        $res=$user->where($where)->find();
+        // echo $user->_sql();
+        // var_dump($res);
+        if($res){
+            $email=$res['User_Email'];
+            $this->assign('email',$email);
+            $this->display();
+        }
+        }
+      }
+
 
 
 }
