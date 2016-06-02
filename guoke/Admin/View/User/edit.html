@@ -73,7 +73,13 @@
  
                     <foreach name="res" item="v"> 
                       <tr class="gradeX">
-                        <td width="10%" class="lh"><img src="__PUBLIC__{$v.User_pic}" width="50px" height="50px" alt=""></td>
+                        <td width="10%" class="lh">
+                        <?php if(strpos($v['User_pic'],'U')==1): ?>
+                        <img src="__PUBLIC__/{$v.User_pic}" width="50px" alt="">
+                        <?php else: ?>
+                        <img src="{$v.User_pic}" width="50px" alt="">
+                        <?php endif; ?>
+                        </td>
                         <td id="sid" width="10%" class="lh">{$v.U_id}</td>
                         <td class="edit_name lh" width="20%" height="45px">{$v.User_Email}</td>
                         <td width="15%" class="lh"><span class="edit_pwd" style='cursor:pointer'>点击修改</span></td>

@@ -72,7 +72,7 @@
 
         <p class="gform-box">
                 <input type="submit" class="gform-submit greg-btn" value="登录">
-                <a class="gform-forget_pw" href="">忘记密码？</a>
+                <a class="gform-forget_pw" href="{:U('Home/Sign/xiougai')}">忘记密码？</a>
         </p>
         </form>
 
@@ -96,7 +96,6 @@
     </div>
 
     <script src="__PUBLIC__/Admin/assets/js/jquery-1.8.3.min.js"></script>
-    <script src="__PUBLIC__/Home/assets/Scripts/jquery.md5.js"></script>
     <script>
 
 $(function(){
@@ -114,14 +113,12 @@ $(function(){
            //阻止默认行为
            var email= $('#email').val();
            var password=$('#password').val();
-           var md5pass=$.md5(password);
            var check=$('#permanent:checked').val();
 
-           // console.log(check);
 
            $.ajax({
              url:"{:U('Home/Login/logindo')}",
-             data:{email:email,pass:md5pass,checked:check},
+             data:{email:email,pass:password,checked:check},
              type:'post',
              async:false,
              success:function(data){

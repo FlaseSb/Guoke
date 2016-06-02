@@ -3,7 +3,7 @@ namespace Admin\Controller;
 use Think\Controller;
 //后台的标签管理控制器.
 class QuetagController extends CommonController {
-	//标签列表显示板块
+    //标签列表显示板块
     public function index(){
         $tag=M('qac_tag');
         // 接收数据
@@ -68,7 +68,7 @@ class QuetagController extends CommonController {
         $this->assign('state',$ord);
         $this->assign('pages',$pages);
         $this->assign('res',$res);
-    	$this->display();
+        $this->display();
     }
 
 

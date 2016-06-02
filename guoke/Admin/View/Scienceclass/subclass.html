@@ -20,10 +20,11 @@
                     <div class="col-sm-2">
                       <div class="bk-margin-bottom-10">
                         <a href="{:U('Admin/Scienceclass/add')}" id="addToTable" class="btn btn-info">Add <i class="fa fa-plus"></i></a>
+                        <a href="javascript:history.go(-1);" class="bk-margin-5 btn btn-success btn-sm subm" style="margin:0px auto">返 回</a>
                       </div>
                     </div>
                     
-                    <div class="btn-group col-sm-6">
+                    <div class="btn-group col-sm-10">
 
                        
                        <ul class="dropdown-menu" role="menu">
@@ -33,16 +34,7 @@
                        </ul>
                     </div>
                     
-                    <div class="col-sm-4">
-                      <form class="search navbar-form"  action="{:U('Admin/Scienceclass/subclass')}" method="get">
-                          <div class="input-group input-search">
-                            <input type="text" class="form-control bk-radius" name="keyword" id="q" placeholder="请输入分类名...">
-                            <span class="input-group-btn" style="width:0px">
-                              <button class="btn btn-default" id="formm" type="submit"><i class="fa fa-search"></i></button>
-                            </span>
-                          </div>            
-                      </form>
-                    </div>
+                    
                   </div>
 
 
@@ -143,7 +135,7 @@
                         //ajax修改是否显示
                         $.post(url,{id:id,display:dis}, function(data) {
                           if (data!=1) {
-                            alert('修改失败');
+                            alert('修改失败或与原名重复');
                           };
                         });
                         return false;

@@ -12,7 +12,7 @@
 
            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" style="background-color: #B8ECE5;">
                
-                  显示条数                          <span class="caret"></span>
+                  显示条数                    <span class="caret"></span>
            </button>
            <ul class="dropdown-menu" role="menu">
               <li><a href="/Admin/group/index/page/8.html">8</a></li>
@@ -39,7 +39,7 @@
 <div class="media-gallery" style="margin-top:-20px" >
 	<div class="mg-main" >							
 		<div class="row mg-files" data-sort-id="media-gallery" style="position: relative; height: 0px;">
-			<foreach name="res" item="v" >
+			<foreach name="res" item="v" key="k" >
 				<div class="isotope-item document col-sm-6 col-md-4 col-lg-3" >
 				<div class="thumbnail">
 					<div class="thumb-preview">
@@ -59,6 +59,10 @@
 					</div>
 				</div>
 				</div>
+				<if condition="($k+1)%4==0 ">
+					<div style="clear:both"></div>
+					<div style="width:100%;height:1px;"></div>
+				</if>
 			</foreach>
 			
 				<div style="clear:both"></div>

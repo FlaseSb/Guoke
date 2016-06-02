@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿    <!DOCTYPE html>
 
 <html class="no-js screen-scroll">
     <head>
@@ -8,21 +8,22 @@
         <meta name="Description" content="汇集知识碎片，创造有价值的答案"/>
         <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1,user-scalable=no" />
         <meta name="format-detection" content="telephone=no" />
-        <block name="title">
         <title> 问答首页 | 问答 | 果壳网 科技有意思</title>
-        </block>
+        <block name="style">
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/css/bc4bd704.main.css" />
         <link rel="stylesheet" href="__PUBLIC__/Home/assets/css/920d0c10.index.css" />
-    
-
-
+        <link rel="stylesheet" href="__PUBLIC__/Home/assets/css/my.css" />
         
-        <block name="style">
-            
         </block>
+        <style>
+        a{
+            color:#666;
+        }
+
+        </style>
 </head>
 
-<body>
+<body style="background-color:white">
         <div class="gheader-wrap">
             
 
@@ -35,13 +36,13 @@
                 </li>
                 <li>
 
-                    <a href="">科学人<b ></b></a>
+                    <a href="{:U('Home/Science/index')}">科学人<b ></b></a>
                 </li>
                 <li>
-                    <a href="">小组<b ></b></a>
+                    <a href="{:U('Home/group/index')}">小组<b ></b></a>
                 </li>
                 <li>
-                    <a href="">问答<b class="gnarrow-up"></b></a>
+                    <a href="">问答</a>
 
                 </li>
                 <li class="gh-sm-hidden">
@@ -58,7 +59,50 @@
                 </li>
 
                 <li id="moreNav" class="gh-sm-hidden">
+                <div id="grt"> 
                     <a href="javascript:void 0;" class="other">更多<i class="gnarrow-down"></i></a>
+                    <div class="gh-list" id="uiui" style="display: none;">
+                                            <ul>
+                                                
+                    <li class="gh-sm-hidden">
+                    <a href="http://fd.zaih.com/fenda" target="_blank">分答</a>
+                    </li>
+
+                                                <!-- 
+                    <li class="gh-sm-hidden">
+                    <a href="http://sex.guokr.com/" target="_blank">知性</a>
+                    </li>
+                     -->
+                                                
+                    <li class="gh-sm-hidden">
+                    <a href="http://www.guokr.com/mobile/" target="_blank">果壳精选</a>
+                    </li>
+
+                                                
+                    <li class="gh-sm-hidden">
+                    <a href="http://gate.guokr.com/" target="_blank">任意门</a>
+                    </li>
+
+                                                
+                    <li class="gh-sm-hidden">
+                    <a href="http://www.guokr.com/group/weixin_account/" target="_blank">果壳微信号</a>
+                    </li>
+
+                                                
+                                                
+                    <li class="gh-sm-hidden">
+                    <a href="http://music.guokr.com/" target="_blank">果壳音乐</a>
+                    </li>
+
+                                                
+                    <li class="gh-sm-hidden">
+                    <a href="http://www.guokr.com/group/185/" target="_blank">果壳动漫</a>
+                    </li>
+
+                                                
+                                            </ul>
+                                        </div>
+                </div>
                     <div class="gh-list">
                         <ul>
                             <li class="gh-sm-hidden">
@@ -87,7 +131,8 @@
                 </p>
             </form>
         </div>
-        <if condition="$msg eq true">
+        
+        <if condition="$msgg eq true">
 
         
             <ul class="gh-notice gfr">
@@ -104,10 +149,13 @@
                                 <a href="http://www.guokr.com/settings/notice/" class="gnicon-set gfl"></a>
                                 <a href="http://www.guokr.com/user/notice/" class="gfr">全部通知</a>
                             </div>
-                            <ul></ul>
-                        </div>
-                        <div class="gh-panel-bottom ghide" id="noticeBottom">
-                            <a href="javascript:void 0;" class="gnbtn miss-all" data-operation="dismissAll">知道了</a>
+
+                                
+                            
+
+                            <ul class="information">
+                                
+                            </ul>
                         </div>
                     </div>
                 </li>
@@ -129,23 +177,26 @@
                 </li>
                 <li id="gheaderSettings">
                     <a href="javascript:void 0;" class="gh-i-me">
-                        <img src="http://1.im.guokr.com/TL27-S81EuoahCN7pVlXlzCI6I07ORoBQCo7fDv5EUqgAAAAoAAAAFBO.png?imageView2/1/w/24/h/24" width="24" height="24">
+                        <img src="{$tou}" width="24" height="24">
                         <i class="gnarrow-down"></i>
                     </a>
-                    <div class="gh-list" style="display:none;" id="settingsBlock">
+                    <div class="gh-list" id="outout" style="display:none;">
                         <ul>
-                            
+                            <li><a data-gaevent="home_nav_i:guokr" href="{:U('Home/Homeinfo/index')}">我的主页</a></li>
+                            <li><a data-gaevent="home_nav_i:guokr" href="{:U('Home/Homeinfo/Group')}">我的小组</a></li>
+                            <li><a href="{:U('Home/Homeinfo/userinfo')}">设置</a></li>
+
+                            <li><a href="" id="goout">退出</a></li>
                         </ul>
                     </div>
                 </li>
            </ul>
          
          <else /> 
-         
             <div class="gh-login">
-                <a rel="nofollow" href="{:U('Home/login/index')}">登录</a>
+                <a href="{:U('Home/login/index')}">登录</a>
                 <span class="split">|</span>
-                <a rel="nofollow" href="{:U('Home/Sign/index')}">注册</a>
+                <a href="{:U('Home/Sign/index')}">注册</a>
             </div>
 
 
@@ -162,8 +213,9 @@
 
 </block>
 
-
-<div class="gbottom">
+<div style="clear:both"></div>
+<block name="footer">
+<div class="gbottom" style="background:none">
     <div class="gbottom-nav">
         <a href="http://www.guokr.com/about/">关于我们</a>
         <a href="http://www.guokr.com/zone/job/">加入果壳</a>
@@ -177,36 +229,132 @@
     </div>
     <div class="gbottom-i">©2015果壳网&nbsp;京ICP备09043258号-2&nbsp;京公网安备1101052730</div>
 </div>
+</block>
 
-    
     <script src="__PUBLIC__/Admin/assets/js/jquery-1.8.3.min.js"></script>
+
     <script>
     $(function(){
-
-       
-       $("#gheaderNotice").click(function(event){ 
+          $("#gheaderNotice").click(function(event){ 
+            event.stopPropagation();
             var r=$(this).find('#noticeBlock');
+            if(r.css('display')== "none" ) {
+                    r.show();
+            }else{
+                    // r.hide();
+            }
+        });
+
+       $(document).click(function(event){
+            var r=$('#noticeBlock');
+                    r.hide();
+       })
+
+       $(".other").click(function(){
+            event.stopPropagation();
+            var r=$('#uiui');
             if(r.css('display')== "none" ) {
                     r.show();
             }else{
                     r.hide();
             }
-            event.stopPropagation();
-        });
-
-       $(document).click(function(event){
-            var r=$('#noticeBlock');
-            if(r.css('display')=="none" ) {
-                    r.show();
-            }else{
-                    r.hide();
-            }
-            
        })
 
+        $(document).click(function(event){
+             var r=$('#uiui');
+                     r.hide();
+        })
 
+
+        $(".gh-i-me").click(function(){
+             event.stopPropagation();
+             var r=$('#outout');
+             if(r.css('display')== "none" ) {
+                     r.show();
+             }else{
+                     r.hide();
+             }
+        })
+
+         $(document).click(function(event){
+              var r=$('#outout');
+                      r.hide();
+         })
+
+         $(".gh-i-remind").click(function(){
+              event.stopPropagation();
+              var r=$('#remindBlock');
+              if(r.css('display')== "none" ) {
+                      r.show();
+              }else{
+                      r.hide();
+              }
+         })
+
+
+          $(document).click(function(event){
+               var r=$('#remindBlock');
+                       r.hide();
+          })
+
+          $('#goout').click(function(){
+                $.ajax({
+                  url:"{:U('Home/Public/OutUser')}",
+                  type:'post',
+                  async:false,
+                  success:function(data){
+                    location.replace(location.href);
+                 }
+                })
+                return false;
+          })
+
+
+
+
+        //获取用户ID
+        var id=<?php echo $_SESSION['Home']['Uid'] ?>;
+        //初始化j标志,用来排除当前页面已查出来的数据
+        var j='';
+        //初始化提醒数量
+        var count=0;
+        //5秒一循,查询贴子回复等信息
+        setInterval(function(){
+            //url
+            var url="{:U('Home/Public/ajaxinformation')}";
+            //ajax
+            $.post(url,{id:id,j:j}, function(data) {
+                count+=data.length;
+                //更改提醒数量
+                $('#noticeNum').html(count);
+                //结果集遍历
+                for (var i = 0; i < data.length; i++) {
+                    //文章地址
+                    var urla="{:U('Home/Article/index')}"+"?id="+data[i]['Wid'];
+                    //把每个li插入
+                    var a=$('<li class="see"><a href="'+urla+'" onclick="abc('+data[i]['id']+')">'+data[i]['Cm_Content']+'</a></li>');
+                    $('.information').prepend(a);
+                    //组合再次查询时要忽略的ID
+                    j+=data[i]['id']+',';
+                };
+            },'json');
+        //计时器时间
+        },3000)
 
     })
+    function abc(id){
+        var url="{:U('Home/Public/ajaxReadInformation')}";
+        $.post(url, {id:id}, function(data) {
+            
+        });
+        
+    }
     </script>
+
+
+
+    <block name="js">
+        
+    </block>
 </body>
 </html>

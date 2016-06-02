@@ -78,7 +78,13 @@
  
                     <foreach name="res" item="v"> 
                       <tr class="gradeX">
-                        <td width="10%"><img src="__PUBLIC__{$v.User_pic}" width="50px" alt=""></td>
+                        <td width="10%">
+                        <?php if(strpos($v['User_pic'],'U')==1): ?>
+                        <img src="__PUBLIC__/{$v.User_pic}" width="50px" alt="">
+                        <?php else: ?>
+                        <img src="{$v.User_pic}" width="50px" alt="">
+                        <?php endif; ?>
+                        </td>
                         <td id="sid" width="10%" class="lh">{$v.U_id}</td>
                         <td class="edit_name lh" width="30%" height="45px">{$v.User_Email}</td>
                         <td width="5%" id="edit_sex" class="lh">{$v.User_Age}</td>

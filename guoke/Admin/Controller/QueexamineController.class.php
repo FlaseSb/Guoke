@@ -3,7 +3,7 @@ namespace Admin\Controller;
 use Think\Controller;
 //后台的问题审核管理控制器.
 class QueexamineController extends CommonController {
-	//问题审核列表显示板块
+    //问题审核列表显示板块
     public function index(){
         // 接收数据
         $name=$_GET['name'];
@@ -45,7 +45,7 @@ class QueexamineController extends CommonController {
         $this->assign('pages',$pages);
         $this->assign('num',$num);
         $this->assign('res',$res);
-    	$this->display();
+        $this->display();
     }
 
     // ajax通过模块

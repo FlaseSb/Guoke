@@ -292,6 +292,19 @@
                   
                   <li class="nav-parent">
                     <a>
+                      <i aria-hidden="true" class="fa fa-bolt"></i><span>权限管理</span>
+                    </a>
+                    <ul class="nav nav-children">
+                      <li><a href="{:U('Admin/Jurisdiction/index')}"><span class="text"> 权限列表</span></a></li>
+                      <li><a href="{:U('Admin/Jurisdiction/add')}"><span class="text"> 权限添加</span></a></li>
+
+                      <li><a href="{:U('Admin/Jurisdiction/edit')}"><span class="text"> 权限管理</span></a></li>
+
+                    </ul>
+                  </li>
+
+                  <li class="nav-parent">
+                    <a>
                       <i class="fa fa-copy" aria-hidden="true"></i><span>用户管理</span>
                     </a>
                     <ul class="nav nav-children">
@@ -315,13 +328,20 @@
                   </li>
                   <li class="nav-parent">
                     <a>
+                      <i class="fa fa-list-alt" aria-hidden="true"></i><span>会话模块</span>
+                    </a>
+                    <ul class="nav nav-children">
+                      <li><a href="{:U('Admin/Chat/index')}"><span class="text">会话列表</span></a></li>
+                    </ul>
+                  </li>
+                  <li class="nav-parent">
+                    <a>
                       <i class="fa fa-list-alt" aria-hidden="true"></i><span>科学人模块</span>
                     </a>
                     <ul class="nav nav-children">
                       <li><a href="{:U('Admin/Scienceclass/index')}"><span class="text">文章分类</span></a></li>
                       <li><a href="{:U('Admin/Scienceaudit/index')}"><span class="text">文章审核</span></a></li>
                       <li><a href="{:U('Admin/Sciencearticle/index')}"><span class="text">文章管理</span></a></li>
-                      <li><a href="{:U('Admin/User/index')}"><span class="text"> 举报管理</span></a></li>
 
                     </ul>
                   </li>
@@ -334,9 +354,9 @@
                       <li><a href="{:U('Admin/Group/index')}"><span class="text"> 小组列表</span></a></li>
                       <li><a href="{:U('Admin/Group/Gjoin')}"><span class="text"> 小组审核</span></a></li>
                       <li><a href="{:U('Admin/Group/add')}"><span class="text"> 小组添加</span></a></li>
-                      <li><a href="table-editable.html"><span class="text"> 小组管理</span></a></li>
-
-                      <li><a href="table-editable.html"><span class="text"> 举报管理</span></a></li>
+                      <li><a href="{:U('Admin/Group/edit')}"><span class="text"> 小组管理</span></a></li>
+                      <li><a href="{:U('Admin/Group/tiezi')}"><span class="text"> 帖子管理</span></a></li>
+                      <li><a href="{:U('Admin/Group/jubao')}"><span class="text">帖子举报</span></a></li>
                     </ul>
                   </li>
                   <li class="nav-parent">
@@ -344,7 +364,6 @@
                       <i class="fa fa-random" aria-hidden="true"></i><span>问答模块</span>
                     </a>
                     <ul class="nav nav-children">
-
 
                       <li><a href="{:U('Admin/Question/index')}"><span class="text"> 问题列表</span></a></li>
                       <li><a href="{:U('Admin/Queexamine/index')}"><span class="text"> 审核问题</span></a></li>
@@ -356,8 +375,9 @@
                       <i class="fa fa-bolt" aria-hidden="true"></i><span>评论管理</span>
                     </a>
                     <ul class="nav nav-children">
-                      <li><a href="chart-flot.html"><span class="text"> 科学评论管理</span></a></li>
-                      <li><a href="chart-xchart.html"><span class="text"> 小组评论管理</span></a></li>
+
+                      <li><a href="{:U('Admin/Sciencecomment/index')}"><span class="text"> 科学评论管理</span></a></li>
+                      <li><a href="{:U('Admin/Group/ping')}"><span class="text"> 小组评论管理</span></a></li>
                       <li><a href="{:U('Admin/Quecomment/index')}"><span class="text"> 问答回答管理</span></a></li>
                     </ul>
                   </li>

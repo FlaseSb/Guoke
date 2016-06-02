@@ -32,25 +32,28 @@ class LoginController extends Controller {
 
     public function logindo(){
         // var_dump($_POST);
+        $_POST['pass']=md5($_POST['pass']);
         // die;
         $m=M('userVerify');
         $w="`User_Email`='".$_POST['email']."'AND `User_Pwd`='".$_POST['pass']."'";
         $res=$m->where($w)->find();
         // echo $m->_sql();
         // var_dump($res);
+        $J=M('userInfo');
+        $where="`U_PID`='".$res['U_id']."'";
+        $r=$J->field('User_Nickname')->where($where)->find();
         //如果成功之后吧用户的UID返回给ajax
         if($res!=null){
             session_start();
             $_SESSION['Home']['Uid']=$res['U_id'];
             $_SESSION['Home']['Email']=$res['User_Email'];
+            $_SESSION['Home']['Nickname']=$r['User_Nickname'];
         if($_POST['checked']=='true'){
 
-            $J=M('userInfo');
-            $where="`U_PID`='".$res['U_id']."'";
-            $r=$J->field('User_Nickname')->where($where)->find();
             // echo $J->_sql();
             cookie('User_Nickname',$r['User_Nickname'],array('expire'=>10800,'prefix'=>'HomeUser_'));
             cookie('User_Pwd',$res['User_Pwd'],array('expire'=>10800,'prefix'=>'HomeUser_'));
+            cookie('User_Uid',$res['U_id'],array('expire'=>10800,'prefix'=>'HomeUser_'));
             
         }
             $this->ajaxReturn($res['U_id']);

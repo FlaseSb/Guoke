@@ -22,7 +22,7 @@ class ArticleController extends Controller {
         //实例化表
         $user=M('sc_article');
         //查询
-        $res = $user->field('Class_Pid,sc_article.id,Time,Title,Class_Title,Content,User_Id,User_Nickname')->join('left join user_info on sc_article.User_Id = user_info.U_PID')->join('left join sc_class on sc_article.Fid= sc_class.id')->where('sc_article.id='.$id)->order('sc_article.id desc')->limit($number,$num)->select();
+        $res = $user->field('Class_Pid,sc_article.id,Time,Title,Class_Title,Content,User_Id,User_Nickname,user_profile.User_pic')->join('left join user_info on sc_article.User_Id = user_info.U_PID')->join('left join sc_class on sc_article.Fid= sc_class.id')->where('sc_article.id='.$id)->join('left join user_profile on sc_article.User_Id= user_profile.U_PID')->where('sc_article.id='.$id.' and user_profile.State=1')->order('sc_article.id desc')->limit($number,$num)->select();
         
         // 转换数据中的文本和时间
         foreach ($res as $k => $v) {
@@ -50,18 +50,17 @@ class ArticleController extends Controller {
         //实例化评论表
         $comment=M('sc_comment');
         //查询此文章的评论
-        //设置where,只需要未删除的评论
-        $where="sc_comment.Delete=0 and Wid=".$id;
+        
         //设置每页显示的数量
-        $num = 3;
+        $num = 4;
         // 查询满足要求的总记录 数
-        $count = $comment->where($where)->count();
+        $count = $comment->where('Deletes=0 and Wid='.$id)->count();
         // 实例化分页类 传入总记录数和每页显示的记录数
         $Page = new \Think\Page($count,$num);
         //获取limit参数
         $limit = $Page->firstRow.','.$Page->listRows;
         //查询
-        $commentres = $comment->field('sc_comment.id,user_info.User_Nickname,user_info.U_PID,sc_comment.Pid,sc_comment.Cm_Content,sc_comment.Cm_Time,user_profile.User_pic')->join('left join user_info on sc_comment.Uid = user_info.U_PID')->join('left join user_profile on sc_comment.Uid= user_profile.U_PID')->where($where)->limit($limit)->select();
+        $commentres = $comment->field('sc_comment.id,user_info.User_Nickname,user_info.U_PID,sc_comment.Pid,sc_comment.Cm_Content,sc_comment.Cm_Time,user_profile.User_pic')->join('right join user_info on sc_comment.Uid = user_info.U_PID')->join('right join user_profile on sc_comment.Uid= user_profile.U_PID')->where("sc_comment.Deletes=0 and sc_comment.Wid=".$id." and user_profile.State=1")->limit($limit)->select();
         //热门评论条件,被赞大于多少
         $hotnum=1;
         //初始化楼层标识
@@ -129,7 +128,6 @@ class ArticleController extends Controller {
         // 分页显示输出
         $pages = $Page->show();
         
-
         //取'您可能喜欢'的4个数据
         //查询出现有的所有文章ID,结果为二维数组
         $comnum=$user->field('id')->select();
@@ -149,12 +147,12 @@ class ArticleController extends Controller {
             $loveres=$user->field('id,Img,Content')->where('id='.$v)->select()[0];
             //转换结果
             $loveres['Img']=htmlspecialchars_decode($loveres['Img']);
-            $loveres['Content']=substr(strip_tags(htmlspecialchars_decode($loveres['Content'])),0,10).'...';
+            $loveres['Content']=mb_substr(strip_tags(htmlspecialchars_decode($loveres['Content'])),0,15,'utf-8').'...';
             //组合结果
             $loveresule[]=$loveres;
         }
-
-
+        // var_dump($res);
+        // die;
         //变量赋值到前台
         $this->assign('hot',$hot);
         $this->assign('pages',$pages);
@@ -213,6 +211,24 @@ class ArticleController extends Controller {
         //删除数据
         $res=$user->where('Like_Lid='.$likeid.' and Like_Uid='.$uid)->delete();
         //是否成功
+        if ($res) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+    }
+    //jajx取消点赞
+    public function ajaxcommentdel(){
+        //过滤数据
+        $id=I('post.id');
+        //实例化评论表
+        $comment=M('sc_comment');
+        //组合数据
+        $data['id']=$id;
+        $data['Delete']=1;
+        //把删除标志改为1
+        $res=$comment->save($data);
+        //结果集判断
         if ($res) {
             echo 1;
         } else {

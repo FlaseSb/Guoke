@@ -37,7 +37,7 @@
     
     
 
-<div class="container article-page">
+<div class="container article-page" style="margin-top:40px;">
     <div class="main">
         <div class="content">
             <div class="content-th">
@@ -77,12 +77,7 @@
                     <div id="share" class="gfl share-box bdsharebuttonbox" data-author="{$res.User_Nickname} " data-tag="shareMain" data-xlnickname=""></div>
                     <div itemprop="http://rdfs.org/sioc/ns#has_disccussion" itemscope itemtype="http://schema.org/UserLike" class="gfr">
                         <meta itemprop="description" content="4" />
-                        <a data-gaevent="article_button_comment:article" href="javascript:void 0;" id="basketBtn" data-title="第谷超新星遗迹，动起来了！" data-url="http://www.guokr.com/article/441438/">收藏</a>
-                        <span class="gsplit">|</span>
-                        <a href="javascript:void 0;" id="recommendBt">
-                            推荐
-                            <span class="recom-num">(4)</span>
-                        </a>
+                        
 
 
 
@@ -129,7 +124,7 @@
                 <ul class="cmts-list">
                                 
                 <foreach name="hot" item="v">
-                <li id="reply3001057">
+                <li class="reply3001172">
                     <div class="cmt-img cmtImg pt-pic">
                         <a href="#" title="{$v.User_Nickname}" data-ukey="21gcae" target="_blank">
                             <img width="48" height="48" src="__PUBLIC__{$v.User_pic}">
@@ -156,6 +151,11 @@
                             
                             <!-- 判断用户是否登录 -->
                             <?php if (isset($_SESSION['Home']) && !empty($_SESSION['Home'])): ?>
+
+                                <?php if ($v['U_PID']==$_SESSION['Home']['Uid']) : ?>
+                                    <span class="commentdel" style="cursor:pointer;color:red;">删除</span>
+                                <?php endif ?>
+
                                 <!-- 判断当前评论点赞状态 -->
                                 <if condition="$v.ynz eq 0"> 
                                     <a class="cmt-do-quote zambia" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001057">顶</a>
@@ -215,7 +215,7 @@
 
 <foreach name="commentres" item="v">
                 
-    <li id="reply3001172">
+    <li class="reply3001172">
         <div class="cmt-img cmtImg pt-pic">
             <a href="http://www.guokr.com/i/0144802463/" title="{$v.User_Nickname}" data-ukey="2e7man" target="_blank">
                 <img width="48" height="48" src="__PUBLIC__{$v.User_pic}">
@@ -243,6 +243,10 @@
                 
                 <!-- 判断用户是否登录 -->
                 <?php if (isset($_SESSION['Home']) && !empty($_SESSION['Home'])): ?>
+                    <?php if ($v['U_PID']==$_SESSION['Home']['Uid']) : ?>
+                        <span class="commentdel" style="cursor:pointer;color:red;">删除</span>
+                    <?php endif ?>
+
                     <if condition="$v.ynz eq 0"> 
                         <a class="cmt-do-quote zambia" data-gaevent="article_comment_ding:article" href="javascript:void 0;" data-operation="likeComment" data-id="3001057">顶</a>
                         <span class="cancelzambia" style="display:none;cursor:pointer;">取消顶</span>
@@ -325,9 +329,15 @@
 
     <div class="side">
         
+
+
+        <!-- 后期过来写联接到用户个人页 -->
+
+
         <div class="author-info  clearfix">
-                <a class="author-pic" href="http://www.guokr.com/i/0721544490/">
-                    <img src="../Picture/_p5x377pntsla33_fd9jz8w8b8t4zxwshqpqs-dlqlygaaaaoaaaaepq.jpg" alt="{$res.User_Nickname}"/>
+                <a class="author-pic" href="
+                #">
+                    <img src="__PUBLIC__{$res.User_pic}" alt="{$res.User_Nickname}">
                 </a>
                 <div class="author-intro clearfix">
                     <span class="author-wrap">
@@ -499,9 +509,30 @@
                 };
             });
         })
+        //删除评论
+        $('.commentdel').click(function(){
+            //获取要删除的ID
+            var delid=$(this).parents('.pt-txt').find('.comid').html();
+            //url
+            var url="{:U('Home/Article/ajaxcommentdel')}";
+            //this赋值
+            var td=$(this);
+            //ajax删除
+            $.post(url, {id:delid}, function(data) {
+                if (data==1) {
+                    //淡出
+                    td.parents('.reply3001172').fadeTo("slow", 0.01, function(){
+                    //删除表格
+                    td.parents('.reply3001172').remove();
+                    });  
+                } else if(data==0){
+                    alert('系统繁忙,请稍后重试');
+                };
+            });
+        })
     <?php endif ?>
 
     //动态改变'您可能喜欢的'图片大小
-    $('.recommend-articles-list').find('img').css('width','90px').css('height','90px');
+    $('.recommend-articles-list').find('img').css('width','127px').css('height','90px');
 </script>
 </block>
